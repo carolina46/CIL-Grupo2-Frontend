@@ -43,7 +43,7 @@ export class RestaurantQueryService {
 
   // Send the message log to the Message Service
   private log(message: string) {
-    this.messageService.add(`RestaurantQueryService: ${message}`); // Notar que usa comillas especiales para que funcione
+    this.messageService.add(`RestaurantQueryService: ${message}`); // Note the special quotation marks
   }
 
   /**
