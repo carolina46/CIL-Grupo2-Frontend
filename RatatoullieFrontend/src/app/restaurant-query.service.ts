@@ -17,20 +17,28 @@ export class RestaurantQueryService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  private categoriesURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
+  private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
+  private categoryPostURL = 'http://localhost:8080/Ratatoullie/category/categoryForm';
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
 
   getCategories() {
-    return this.http.get(this.categoriesURL);
+    return this.http.get(this.categoriesGetURL);
   }
 
   getCategory(id: number): Observable<Category> {
     const url = `${this.categoryURL}/${id}`;
-    return this.http.get<Category>(url)
-      .pipe(
+    return this.http.get<Category>(url).pipe(
         tap(_ => this.log(`retrieved category with id=${id}`)),
         catchError(this.handleError<Category>(`getCategory id=${id}`))
       );
+  }
+
+  /** POST: add a new category to the server */
+  addCategory (category: Category): Observable <Category> {
+    return this.http.post<Category>(this.categoryPostURL, category, httpOptions).pipe(
+      tap((category: Category) => this.log(`added category w/ id=${category.id}`)),
+      catchError(this.handleError<Category>('addCategory'))
+    );
   }
 
   // Send the message log to the Message Service
