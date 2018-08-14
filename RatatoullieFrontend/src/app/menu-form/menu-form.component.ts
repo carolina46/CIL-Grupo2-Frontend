@@ -9,6 +9,7 @@ import { RestaurantQueryService } from '../restaurant-query.service';
 export class MenuFormComponent implements OnInit {
 
   menuTypes:object;
+  menuTypeSelect;
 
   constructor(private restaurantQueryService: RestaurantQueryService) { }
 

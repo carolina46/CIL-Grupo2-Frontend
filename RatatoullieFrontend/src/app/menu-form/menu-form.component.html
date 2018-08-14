@@ -11,7 +11,7 @@
       <div>
         <label for="menuType">Tipo de men&uacute;</label>
         <select id="menuType" required>
-          <option *ngFor="let type of menuTypes" value={{type.id}}>{{type.name}}</option>
+          <option *ngFor="let menuType of menuTypes" [value]="menuType.id">{{menuType.name}}</option>
         </select>
       </div>
 

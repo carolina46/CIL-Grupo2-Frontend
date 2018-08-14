@@ -26,6 +26,12 @@ export class RestaurantQueryService {
     return this.http.get(this.categoriesGetURL);
   }
 
+  getMenuTypes() {
+    return this.http.get('http://localhost:8080/Ratatoullie/menuType/list').pipe(
+      catchError(this.handleError('getMenuTypes', [])));
+  }
+
+
   getCategory(id: number): Observable<Category> {
     const url = `${this.categoryURL}/${id}`;
     return this.http.get<Category>(url).pipe(
@@ -66,7 +72,5 @@ export class RestaurantQueryService {
     };
   }
 
-  getMenuTypes() {
-    return this.http.get('http://localhost:8080/Ratatoullie/menuType/listMenuType');
-  }
+  
 }
