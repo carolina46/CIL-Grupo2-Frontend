@@ -1,6 +1,31 @@
 <div id="contenido">
-  <p>
-    Alta menu
-  </p>
-</div>
+  <div id="form">
+    <p>Alta men&uacute;</p>
+    <form>
+      
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" id="name" required>
+      </div>
+          
+      <div>
+        <label for="menuType">Tipo de men&uacute;</label>
+        <select id="menuType" required>
+          <option *ngFor="let type of menuTypes" value={{type.id}}>{{type.name}}</option>
+        </select>
+      </div>
 
+      <div>
+        <label for="tag">Tags</label>
+        <div id="list">
+          <input type="checkbox" name="tag" value="1">#Vegetariano <br>
+          <input type="checkbox" name="tag" value="2">FastFood <br>
+          <input type="checkbox" name="tag" value="3">TacFree <br>
+        </div>
+      </div>
+
+      <button type="submit" class="submit"> Agregar</button>
+
+    </form>
+  </div>
+</div>
