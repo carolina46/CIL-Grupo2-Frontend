@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../category.service';
+import { RestaurantQueryService } from '../restaurant-query.service';
 
 @Component({
   selector: 'app-list-category',
@@ -10,14 +10,14 @@ export class ListCategoryComponent implements OnInit {
 
   categories: object;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private restaurantQueryService: RestaurantQueryService) { }
 
   ngOnInit() {
     this.getCategories();
   }
 
   getCategories(): void {
-    this.categoryService.getCategories().subscribe(categories => this.categories = categories);
+    this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
   }
 
 }
