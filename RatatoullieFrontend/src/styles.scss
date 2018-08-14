@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Merienda;
+}
+
+body {
+    background: url("./assets/images/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    //Fuente: https://www.webfx.com/blog/web-design/responsive-background-image/
+}
+
+@font-face{
+    font-family: Merienda;
+    src: url(./assets/fonts/Merienda-Regular.ttf);
+  }
