@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { DishFormComponent } from './dish-form/dish-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
     MenuComponent,
     ListCategoryComponent,
     PrincipalComponent,
-    MenuFormComponent
+    MenuFormComponent,
+    DishFormComponent
   ],
   imports: [
     BrowserModule,
