@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ListCategoryComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    MenuFormComponent
   ],
   imports: [
     BrowserModule,
