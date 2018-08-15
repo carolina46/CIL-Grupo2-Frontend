@@ -6,7 +6,7 @@ import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { MenuType } from 'src/app/model/business/menu-type';
+import { MenuType } from './model/business/menu-type';
 
 @Injectable({
   providedIn: 'root'
