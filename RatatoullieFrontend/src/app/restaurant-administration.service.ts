@@ -2,10 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Category } from './model/business/category';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { ParentServiceService } from './parent-service.service';
 import { MessageService } from './message.service';
 
@@ -16,13 +14,11 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class RestaurantAdministrationService extends ParentServiceService{
+export class RestaurantAdministrationService extends ParentServiceService {
 
   private categoryPostURL = 'http://localhost:8080/Ratatoullie/category/categoryForm';
 
   constructor(private http: HttpClient,
-    private route: ActivatedRoute,
-    private location: Location,
     messageService: MessageService) {
       super(messageService);
    }
