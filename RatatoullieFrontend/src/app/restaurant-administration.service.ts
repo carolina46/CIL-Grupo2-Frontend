@@ -23,7 +23,8 @@ export class RestaurantAdministrationService {
 
   /** POST: add a new category to the server */
   addCategory (category: Category): Observable <Category> {
-    return this.http.post<Category>(this.categoryPostURL, category, httpOptions).pipe(
+    const jsonCategory = JSON.stringify(category);
+    return this.http.post<Category>(this.categoryPostURL, jsonCategory, httpOptions).pipe(
       tap((category: Category) => this.log(`added category w/ id=${category.id}`)),
       catchError(this.handleError<Category>('addCategory'))
     );
