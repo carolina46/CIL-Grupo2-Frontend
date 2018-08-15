@@ -1,4 +1,4 @@
-<div id="contenido">
+<!--<div id="contenido">
   <div id="form">
     <p>Alta men&uacute;</p>
     <form>
@@ -28,4 +28,36 @@
 
     </form>
   </div>
+</div>
+-->
+
+
+{{diagnostic}}
+<div id="contenido">
+<div id="form"> 
+  
+    <h1>Alta men&uacute;</h1>
+    <form (ngSubmit)="onSubmit()" #menuForm="ngForm">
+      
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" id="name"
+               [(ngModel)]="menu.name" name="name"
+               #name="ngModel">
+        </div>
+ 
+      <div>
+        <label for="menuType">Tipo de men&uacute;</label>
+        <select id="menuType"
+                [(ngModel)]="menu.type.id" name="menuType"
+                #menuType="ngModel">
+          <option *ngFor="let type of menuTypes" [value]="type.id">{{type.name}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" class="submit">Agregar</button>
+    
+
+    </form>
+</div>
 </div>

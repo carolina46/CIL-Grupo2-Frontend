@@ -6,6 +6,7 @@ import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { MenuType } from 'src/app/model/business/menu-type';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,12 @@ export class RestaurantQueryService {
       );
   }
 
-  /*getMenuTypes() {
-    return this.http.get('http://localhost:8080/Ratatoullie/menuType/list').pipe(
-      catchError(this.handleError('getMenuTypes', [])));
-  }*/
-  // CAROLINA CHECK IF THIS IS THE NEW METHOD
+  getMenuTypes(): Observable<MenuType[]> {
+    return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
+      .pipe(tap(categories => this.log('menuTypes retrieved')),
+      catchError(this.handleError('getMenuTypes', []))
+    );
+  }
 
 
   getCategory(id: number): Observable<Category> {
@@ -42,9 +44,6 @@ export class RestaurantQueryService {
       );
   }
 
-  getMenuTypes() {
-    return this.http.get('http://localhost:8080/Ratatoullie/menuType/listMenuType');
-  }
 
   // Send the message log to the Message Service
   protected log(message: string) {
