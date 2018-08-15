@@ -1,17 +1,21 @@
 /* This service will be responsible for providing operations such as
 list and search for Restaurant, Menu, Dish and related classes.*/
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { MenuType } from 'src/app/model/business/menu-type';
+import { MenuType } from './model/business/menu-type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantQueryService {
+
+  httpOptions={headers:new HttpHeaders({
+                      'Content-Type': 'application/json'})
+                    };
 
   constructor(private http: HttpClient,
     private messageService: MessageService) {
@@ -35,6 +39,10 @@ export class RestaurantQueryService {
     );
   }
 
+  saveMenuTypes(menuType: MenuType){
+    this.http.post('http://localhost:8080/Ratatoullie/menuType/save',JSON.stringify({ menuType }), this.httpOptions);
+    
+  }
 
   getCategory(id: number): Observable<Category> {
     const url = `${this.categoryURL}/${id}`;

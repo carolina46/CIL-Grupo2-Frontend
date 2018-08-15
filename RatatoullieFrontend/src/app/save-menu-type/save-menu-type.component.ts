@@ -17,10 +17,6 @@ export class SaveMenuTypeComponent implements OnInit {
   }
 
   onSubmit() {
-
-   }
-
-   addMenuTypes(): void {
-    //this.restaurantQueryService.addMenuTypes(menuType);
+    this.restaurantQueryService.saveMenuTypes(this.menuType);
   }
 }
