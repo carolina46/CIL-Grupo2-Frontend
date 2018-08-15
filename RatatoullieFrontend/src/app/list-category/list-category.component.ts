@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 export class ListCategoryComponent implements OnInit {
 
   @Input() category: Category;
-  categories: object;
+  categories: Category[];
 
   constructor(private restaurantQueryService: RestaurantQueryService,
     private restaurantAdministrationService: RestaurantAdministrationService,
@@ -31,7 +31,7 @@ export class ListCategoryComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  
+
   add(): void {
     this.restaurantAdministrationService.addCategory(this.category)
     .subscribe(() => this.goBack);

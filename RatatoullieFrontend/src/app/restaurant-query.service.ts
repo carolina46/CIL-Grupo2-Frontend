@@ -21,8 +21,16 @@ export class RestaurantQueryService extends ParentServiceService {
   private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
 
-  getCategories() {
-    return this.http.get(this.categoriesGetURL);
+  // getCategories() {
+  //   return this.http.get(this.categoriesGetURL);
+  // }
+
+  // Returns an Observable array of Categories, save in the log and handles error if any
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.categoriesGetURL).pipe(
+        tap(categories => super.log('categories retrieved')),
+        catchError(super.handleError('getCategories', []))
+      );
   }
 
   /*getMenuTypes() {
