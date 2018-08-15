@@ -1,15 +1,11 @@
-/* This service will be responsible for providing operations such as 
+/* This service will be responsible for providing operations such as
 list and search for Restaurant, Menu, Dish and related classes.*/
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +15,6 @@ export class RestaurantQueryService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
-  private categoryPostURL = 'http://localhost:8080/Ratatoullie/category/categoryForm';
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
 
   getCategories() {
@@ -34,12 +29,8 @@ export class RestaurantQueryService {
       );
   }
 
-  /** POST: add a new category to the server */
-  addCategory (category: Category): Observable <Category> {
-    return this.http.post<Category>(this.categoryPostURL, category, httpOptions).pipe(
-      tap((category: Category) => this.log(`added category w/ id=${category.id}`)),
-      catchError(this.handleError<Category>('addCategory'))
-    );
+  getMenuTypes() {
+    return this.http.get('http://localhost:8080/Ratatoullie/menuType/listMenuType');
   }
 
   // Send the message log to the Message Service
@@ -64,9 +55,5 @@ export class RestaurantQueryService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  getMenuTypes() {
-    return this.http.get('http://localhost:8080/Ratatoullie/menuType/listMenuType');
   }
 }
