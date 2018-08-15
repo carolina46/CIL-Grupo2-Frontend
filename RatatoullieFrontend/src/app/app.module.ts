@@ -10,6 +10,7 @@ import { ListCategoryComponent } from './list-category/list-category.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
+import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DishFormComponent } from './dish-form/dish-form.component';
     ListCategoryComponent,
     PrincipalComponent,
     MenuFormComponent,
-    DishFormComponent
+    DishFormComponent,
+    SaveMenuTypeComponent
   ],
   imports: [
     BrowserModule,

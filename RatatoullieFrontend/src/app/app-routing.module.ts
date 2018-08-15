@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
+import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 
 const routes: Routes = [
   { path: 'listCategories', component: ListCategoryComponent },
   { path: 'principal', component: PrincipalComponent },
   { path: 'menuForm', component: MenuFormComponent },
-  { path: 'dishForm', component: DishFormComponent }
+  { path: 'dishForm', component: DishFormComponent },
+  { path: 'saveMenuType', component: SaveMenuTypeComponent }
   
 ];
 

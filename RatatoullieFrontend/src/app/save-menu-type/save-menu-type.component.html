@@ -1,0 +1,15 @@
+<div id="contenido">
+<div id="form"> 
+
+    <p>Alta - Tipo de men&uacute;</p>
+    <form (ngSubmit)="onSubmit()" #saveMenuTypeForm="ngForm">
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" id="name" required
+               [(ngModel)]="menuType.name" name="name"
+               #name="ngModel">
+      </div>
+      <button type="submit" class="submit">Agregar</button>
+    </form>
+</div>
+</div>
