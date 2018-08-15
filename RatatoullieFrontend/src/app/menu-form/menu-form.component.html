@@ -14,13 +14,13 @@
           <option *ngFor="let menuType of menuTypes" [value]="menuType.id">{{menuType.name}}</option>
         </select>
       </div>
-
+     
       <div>
         <label for="tag">Tags</label>
         <div id="list">
-          <input type="checkbox" name="tag" value="1">#Vegetariano <br>
-          <input type="checkbox" name="tag" value="2">FastFood <br>
-          <input type="checkbox" name="tag" value="3">TacFree <br>
+          <label *ngFor="let menuType of menuTypes">
+              <input type="checkbox" [name]="menuType.id">{{menuType.name}} <br *ngIf="true">
+          </label>
         </div>
       </div>
 
