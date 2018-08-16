@@ -2,6 +2,7 @@
 list and search for Restaurant, Menu, Dish and related classes.*/
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Headers, RequestOptions } from '@angular/http';
 import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -13,35 +14,21 @@ import { MenuType } from './model/business/menu-type';
 })
 export class RestaurantQueryService {
 
-  httpOptions={headers:new HttpHeaders({
-                      'Content-Type': 'application/json'})
-                    };
+  private url = 'http://localhost:8080/Ratatoullie/';
 
-  constructor(private http: HttpClient,
-    private messageService: MessageService) {
-  }
+  constructor(private http: HttpClient, private messageService: MessageService) {  }
 
   private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
 
+
+  //------CATEGORY METHODS -------
   // Returns an Observable array of Categories, save in the log and handles error if any
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoriesGetURL).pipe(
         tap(categories => this.log('categories retrieved')),
         catchError(this.handleError('getCategories', []))
       );
-  }
-
-  getMenuTypes(): Observable<MenuType[]> {
-    return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
-      .pipe(tap(categories => this.log('menuTypes retrieved')),
-      catchError(this.handleError('getMenuTypes', []))
-    );
-  }
-
-  saveMenuTypes(menuType: MenuType){
-    this.http.post('http://localhost:8080/Ratatoullie/menuType/save',JSON.stringify({ menuType }), this.httpOptions);
-    
   }
 
   getCategory(id: number): Observable<Category> {
@@ -53,6 +40,26 @@ export class RestaurantQueryService {
   }
 
 
+
+  //------MENU TYPE METHODS -------
+  getMenuTypes(): Observable<MenuType[]> {
+    return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
+      .pipe(tap(menuType => this.log('menuTypes retrieved')),
+      catchError(this.handleError('getMenuTypes', [])));
+  }
+
+  saveMenuTypes(menuType: MenuType){
+    let body = JSON.stringify({ menuType });  
+    let header = ({ headers:new HttpHeaders({ 'Content-Type': 'application/json' })});
+    return this.http.post(this.url + 'menuType/save', body, header).pipe(
+      catchError(this.handleError('saveMenuTypes', menuType)));
+
+    }
+
+
+
+
+   //------HandleError METHODS -------
   // Send the message log to the Message Service
   protected log(message: string) {
     this.messageService.add(`RestaurantQueryService: ${message}`); // Note the special quotation marks
