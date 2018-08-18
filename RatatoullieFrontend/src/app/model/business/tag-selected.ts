@@ -1,5 +1,5 @@
 export class TagSelected {
-    id: number;
+    oid: number;
     name: string;
     selected: boolean;
 }

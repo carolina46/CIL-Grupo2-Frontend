@@ -48,8 +48,8 @@ export class RestaurantQueryService {
       catchError(this.handleError('getMenuTypes', [])));
   }
 
-  saveMenuType(menuType: MenuType): Observable<MenuType> {
-    const body = JSON.stringify({ menuType });
+  saveMenuType(menuType: MenuType): Observable<MenuType>{
+   let body = JSON.stringify(menuType); 
     return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
       tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.oid}`)),
       catchError(this.handleError<MenuType>('addMenuType'))
