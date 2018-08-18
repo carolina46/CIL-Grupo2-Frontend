@@ -24,10 +24,9 @@
 <h3>New Category:</h3>
 <div>
   <label>Category name:
-    <input #categoryName />
+    <input type="text" id="name" [(ngModel)]="category.name"/>
   </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  &nbsp;<button (click)="add(categoryName.value); categoryName.value=''">
+  &nbsp;<button (click)="add();">
     Add
   </button>
 </div>

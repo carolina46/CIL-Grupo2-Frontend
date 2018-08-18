@@ -5,10 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { Component } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +13,9 @@ const httpOptions = {
 export class RestaurantAdministrationService {
 
   private categoryPostURL = 'http://localhost:8080/Ratatoullie/category/categoryForm';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient,
     private messageService: MessageService) {
@@ -23,8 +23,9 @@ export class RestaurantAdministrationService {
 
   /** POST: add a new category to the server */
   addCategory (category: Category): Observable <Category> {
+    console.log(`addCategory to ${this.categoryPostURL} the cat: ${category.name}`);
     const jsonCategory = JSON.stringify(category);
-    return this.http.post<Category>(this.categoryPostURL, jsonCategory, httpOptions).pipe(
+    return this.http.post<Category>(this.categoryPostURL, jsonCategory, this.httpOptions).pipe(
       tap((category: Category) => this.log(`added category w/ id=${category.oid}`)),
       catchError(this.handleError<Category>('addCategory'))
     );
