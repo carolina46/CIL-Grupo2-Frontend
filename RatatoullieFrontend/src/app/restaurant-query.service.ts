@@ -16,7 +16,7 @@ import { Tag } from './model/business/tag';
 export class RestaurantQueryService {
 
   private url = 'http://localhost:8080/Ratatoullie/';
-  private header = ({ headers:new HttpHeaders({ 'Content-Type': 'application/json' })});
+  private header = ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
 
   constructor(private http: HttpClient, private messageService: MessageService) {  }
 
@@ -24,7 +24,7 @@ export class RestaurantQueryService {
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
 
 
-  //------CATEGORY METHODS -------
+  // ------CATEGORY METHODS -------
   // Returns an Observable array of Categories, save in the log and handles error if any
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoriesGetURL).pipe(
@@ -41,17 +41,15 @@ export class RestaurantQueryService {
       );
   }
 
-
-
-  //------MENU TYPE METHODS -------
+  // ------MENU TYPE METHODS -------
   getMenuTypes(): Observable<MenuType[]> {
     return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
       .pipe(tap(menuType => this.log('menuTypes retrieved')),
       catchError(this.handleError('getMenuTypes', [])));
   }
 
-  saveMenuType(menuType: MenuType): Observable<MenuType>{
-    let body = JSON.stringify({ menuType });  
+  saveMenuType(menuType: MenuType): Observable<MenuType> {
+    const body = JSON.stringify({ menuType });
     return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
       tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.id}`)),
       catchError(this.handleError<MenuType>('addMenuType'))
@@ -75,7 +73,7 @@ export class RestaurantQueryService {
   }
 
 
-    //------TAG METHODS -------
+    // ------TAG METHODS -------
     getTags(): Observable<Tag[]> {
       return this.http.get<Tag[]>(this.url + '/tag/list')
         .pipe(tap(tag => this.log('tag retrieved')),
@@ -83,7 +81,7 @@ export class RestaurantQueryService {
     }
 
 
-   //------HandleError METHODS -------
+  // ------HandleError METHODS -------
   // Send the message log to the Message Service
   protected log(message: string) {
     this.messageService.add(`RestaurantQueryService: ${message}`); // Note the special quotation marks

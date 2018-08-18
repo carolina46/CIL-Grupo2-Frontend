@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'menuForm', component: MenuFormComponent },
   { path: 'dishForm', component: DishFormComponent },
   { path: 'saveMenuType', component: SaveMenuTypeComponent }
-  
+
 ];
 
 @NgModule({
