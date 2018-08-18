@@ -1,4 +1,4 @@
 export class MenuType {
-    id: number;
+    oid: number;
     name: string;
   }
