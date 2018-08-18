@@ -1,14 +1,37 @@
-<div id="contenido">
-<div id="form"> 
-    <p>Alta - Tipo de men&uacute;</p>
-    <form (ngSubmit)="onSubmit()" #saveMenuTypeForm="ngForm">
-      <div>
-        <label for="name">Nombre</label>
-        <input type="text" id="name" required
-               [(ngModel)]="menuType.name" name="name"
-               #name="ngModel">
-      </div>
-      <button type="submit" class="submit">Agregar</button>
-    </form>
-</div>
+<div id="frame">
+    <div id="frameTitle">
+          <H2>PANEL DE CONTROL</H2>
+          <H3>Tipo de men&uacute;</H3>
+    </div>
+    <div id="frameBody">
+          <div id="frameAdd">
+              <div id="form"> 
+                    <p >Nuevo</p>
+                    <form (ngSubmit)="onSubmit()" #saveMenuTypeForm="ngForm">
+                      <div id="label">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" required
+                              [(ngModel)]="menuType.name" name="name"
+                              #name="ngModel">
+                              <div [hidden]="!(submited&&menuType.name.length==0)"  class="alert alert-danger">
+                                  Debes ingresar un nombre
+                              </div>
+                      </div>
+                      <button type="button" class="submit" (click)="agregar();">Agregar</button>
+                    </form>
+              </div>
+          </div>
+          <div id="frameList">
+              <div id="list">
+                  <p >Listado</p>
+                  <ul>
+                      <li *ngFor="let type of mt">
+                      <span id="itemList">{{type}}</span>
+                      <button id="buttonList" type="button" (click)="delete();"><img src="../../assets/images/delete.svg"></button>
+                      <button id="buttonList" type="button" (click)="edit();"><img src="../../assets/images/edit.svg"></button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+    </div>
 </div>

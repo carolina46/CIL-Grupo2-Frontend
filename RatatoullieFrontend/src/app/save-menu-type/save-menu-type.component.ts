@@ -12,13 +12,42 @@ export class SaveMenuTypeComponent implements OnInit {
 
   constructor(private restaurantQueryService: RestaurantQueryService) { }
 
-  menuType=new MenuType();
+  menuTypes: MenuType[];
+  submited: boolean;
+  mt = ['Really Smart', 'Super Flexible',
+  'Super Hot', 'Weather Changer'];
+  menuType: MenuType;
   
   ngOnInit() {
+    this.getMenuTypes();
+    this.menuType=new MenuType();
+    this.menuType.name="";
+    this.submited=false;
   }
 
-  onSubmit() {
-    this.restaurantQueryService.saveMenuTypes(this.menuType);
+  agregar() {
+    if(this.menuType.name.length==0){
+      this.submited=true;
+    }
+    else{
+      this.submited=false;
+      this.menuType.name="";
+      console.log(this.menuType);
+      console.log(this.restaurantQueryService.saveMenuTypes(this.menuType));
+    }  
     
+    
+  }
+
+  delete(){
+    console.log("delete");
+  }
+
+  edit(){
+    console.log("edit");
+  }
+
+  getMenuTypes(): void {
+    this.restaurantQueryService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
   }
 }
