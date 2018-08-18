@@ -32,13 +32,11 @@ export class SaveMenuTypeComponent implements OnInit {
     else{
       let aux= new MenuType();
       this.restaurantQueryService.saveMenuType(this.menuType).subscribe(menuType => {
-        aux=menuType;
+        aux=menuType; if(aux.name.length>0){this.menuTypes.push(aux);}
       });
       this.submited=false;
       this.menuType.name="";
-      if(aux.name.length>0){
-        this.menuTypes.push(aux);
-      }
+      
     }  
   }
 
@@ -50,7 +48,7 @@ export class SaveMenuTypeComponent implements OnInit {
   edit(){
     this.showAddForm=true;//show form add
     this.restaurantQueryService.updateMenuType(this.menuType);
-    console.log(this.menuType.id);
+    console.log(this.menuType.oid);
   }
 
   getMenuTypes(): void {
