@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { MenuType } from './model/business/menu-type';
+import { Tag } from './model/business/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,12 @@ export class RestaurantQueryService {
 
     }
 
-
+    //------TAG METHODS -------
+    getTags(): Observable<Tag[]> {
+      return this.http.get<Tag[]>(this.url + '/tag/list')
+        .pipe(tap(tag => this.log('tag retrieved')),
+        catchError(this.handleError('getTags', [])));
+    }
 
 
    //------HandleError METHODS -------
