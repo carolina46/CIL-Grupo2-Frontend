@@ -49,7 +49,7 @@
       <div>
         <label for="menuType">Tipo de men&uacute;</label>
         <select id="menuType"
-                [(ngModel)]="menu.type.id" name="menuType"
+                [(ngModel)]="menuType.id" name="menuType"
                 #menuType="ngModel">
           <option *ngFor="let type of menuTypes" [value]="type.id">{{type.name}}</option>
         </select>
