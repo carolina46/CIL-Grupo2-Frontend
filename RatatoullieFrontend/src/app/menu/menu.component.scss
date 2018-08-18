@@ -3,6 +3,7 @@ header{
   height: 60px;
   background: rgba(26,188,156,0.7);
   position: fixed; //Deja menu fijo.
+  //Sombra
   -webkit-box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
   box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
@@ -27,6 +28,7 @@ header{
   font-size: 22px;
   text-decoration: none;
   font-family: Merienda;
+  text-shadow: -1px -1px 1px #000;
 }
 
 #logo a:hover{
