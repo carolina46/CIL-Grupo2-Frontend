@@ -145,11 +145,30 @@ ul{
 }
 
 #buttonList{
-    width: 10%;
+    width: 9%;
     margin-right: 10px;
     display: inline-block;
     border-radius:10px;
-    background-color:#beba86;
+    background-color : #aca760;
+    //background-color:#beba86;
    
 }
 
+#buttonEdit{
+    -moz-box-shadow: 0px 0px 0px 1px #9fb4f2;
+	-webkit-box-shadow: 0px 0px 0px 1px #9fb4f2;
+	box-shadow: 0px 0px 0px 1px #9fb4f2;
+    background-color : #aca760;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:10px;
+    padding:12px 30px;
+    margin-left: 10px;
+    text-decoration:none;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#buttonEdit:hover {
+	background-color:#beba86;
+}

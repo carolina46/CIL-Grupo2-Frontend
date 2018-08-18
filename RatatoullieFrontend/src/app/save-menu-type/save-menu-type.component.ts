@@ -12,17 +12,17 @@ export class SaveMenuTypeComponent implements OnInit {
 
   constructor(private restaurantQueryService: RestaurantQueryService) { }
 
-  menuTypes: MenuType[];
-  submited: boolean;
-  mt = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
-  menuType: MenuType;
+  menuTypes: MenuType[];//List of existing menuType
+  submited: boolean;//To control that the name field contains something
+  menuType: MenuType;//Auxiliary variable to save changes
+  showAddForm: boolean;//To control whether the add or edit form is displayed
   
   ngOnInit() {
     this.getMenuTypes();
     this.menuType=new MenuType();
     this.menuType.name="";
-    this.submited=false;
+    this.submited=false;//Did not press the add button
+    this.showAddForm=true;
   }
 
   agregar() {
@@ -32,22 +32,35 @@ export class SaveMenuTypeComponent implements OnInit {
     else{
       this.submited=false;
       this.menuType.name="";
-      console.log(this.menuType);
-      console.log(this.restaurantQueryService.saveMenuTypes(this.menuType));
+      this.restaurantQueryService.saveMenuType(this.menuType).subscribe(mt => {
+        this.menuTypes.push(mt);
+      });
     }  
-    
-    
   }
 
-  delete(){
-    console.log("delete");
+  delete(menuType: MenuType): void {
+    this.menuTypes = this.menuTypes.filter(h => h !== menuType);
+    this.restaurantQueryService.deleteMenuType(menuType).subscribe();
   }
 
   edit(){
-    console.log("edit");
+    this.showAddForm=true;//show form add
+    this.restaurantQueryService.updateMenuType(this.menuType);
+    console.log(this.menuType.id);
   }
 
   getMenuTypes(): void {
     this.restaurantQueryService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
+  }
+
+
+  buttonEdit(menuType: MenuType){
+    this.menuType=menuType;
+    this.showAddForm=false;//show form edit
+  }
+  buttonCancelEdit(){
+    this.menuType=new MenuType();
+    this.menuType.name="";
+    this.showAddForm=true;//show form add
   }
 }

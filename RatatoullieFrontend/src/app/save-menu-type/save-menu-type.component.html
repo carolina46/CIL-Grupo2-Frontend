@@ -4,31 +4,46 @@
           <H3>Tipo de men&uacute;</H3>
     </div>
     <div id="frameBody">
-          <div id="frameAdd">
-              <div id="form"> 
-                    <p >Nuevo</p>
-                    <form (ngSubmit)="onSubmit()" #saveMenuTypeForm="ngForm">
-                      <div id="label">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" required
-                              [(ngModel)]="menuType.name" name="name"
-                              #name="ngModel">
-                              <div [hidden]="!(submited&&menuType.name.length==0)"  class="alert alert-danger">
-                                  Debes ingresar un nombre
-                              </div>
-                      </div>
-                      <button type="button" class="submit" (click)="agregar();">Agregar</button>
-                    </form>
-              </div>
-          </div>
+
+            <!--FORM TO ADD OR UPDATE A MENU TYPE-->
+            <div id="frameAdd">
+                <div id="form"> 
+                        <div *ngIf="showAddForm; else editFormTitle"><p>Nuevo</p></div>
+                        <ng-template #editFormTitle><p>Editar</p></ng-template>
+
+                        <form (ngSubmit)="onSubmit()" #saveMenuTypeForm="ngForm">
+                        <div id="label">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required
+                                [(ngModel)]="menuType.name" name="name"
+                                #name="ngModel">
+                                <div [hidden]="!(submited&&menuType.name.length==0)"  class="alert alert-danger">
+                                    Debes ingresar un nombre
+                                </div>
+                        </div>
+
+
+                        <div *ngIf="showAddForm; else editFormButtons">
+                            <button type="button" class="submit" (click)="agregar();">Agregar</button>
+                        </div>
+                        <ng-template #editFormButtons>
+                            <button type="button" id="buttonEdit" (click)="edit();">Editar</button>
+                            <button type="button" id="buttonEdit" (click)="buttonCancelEdit();">Cancelar</button>
+                        </ng-template>
+                        
+                        </form>
+                </div>
+            </div>
+
+          <!--LIST OF EXISTING MENU TYPE-->
           <div id="frameList">
               <div id="list">
                   <p >Listado</p>
                   <ul>
-                      <li *ngFor="let type of mt">
-                      <span id="itemList">{{type}}</span>
-                      <button id="buttonList" type="button" (click)="delete();"><img src="../../assets/images/delete.svg"></button>
-                      <button id="buttonList" type="button" (click)="edit();"><img src="../../assets/images/edit.svg"></button>
+                      <li *ngFor="let type of menuTypes">
+                      <span id="itemList">{{type.name}}</span>
+                      <button id="buttonList" type="button" (click)="delete(type);"><img src="../../assets/images/deleteW.png"></button>
+                      <button id="buttonList" type="button" (click)="buttonEdit(type);"><img src="../../assets/images/editW.png"></button>
                       </li>
                   </ul>
               </div>
