@@ -16,6 +16,7 @@ import { Tag } from './model/business/tag';
 export class RestaurantQueryService {
 
   private url = 'http://localhost:8080/Ratatoullie/';
+  private header = ({ headers:new HttpHeaders({ 'Content-Type': 'application/json' })});
 
   constructor(private http: HttpClient, private messageService: MessageService) {  }
 
@@ -49,13 +50,30 @@ export class RestaurantQueryService {
       catchError(this.handleError('getMenuTypes', [])));
   }
 
-  saveMenuTypes(menuType: MenuType){
+  saveMenuType(menuType: MenuType): Observable<MenuType>{
     let body = JSON.stringify({ menuType });  
-    let header = ({ headers:new HttpHeaders({ 'Content-Type': 'application/json' })});
-    return this.http.post(this.url + 'menuType/save', body, header).pipe(
-      catchError(this.handleError('saveMenuTypes', menuType)));
+    return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
+      tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.id}`)),
+      catchError(this.handleError<MenuType>('addMenuType'))
+    );
+  }
 
-    }
+  deleteMenuType (menuType: MenuType): Observable<MenuType> {
+    const id = typeof menuType.id;
+    const url = `${this.url}/menuType/delete/${id}`;
+    return this.http.delete<MenuType>(url, this.header).pipe(
+      tap(_ => this.log(`deleted MenuType id=${id}`)),
+      catchError(this.handleError<MenuType>('deleteMenuType'))
+    );
+  }
+
+  updateMenuType (menuType: MenuType): Observable<any> {
+    return this.http.put(this.url + 'menuType/update', menuType, this.header).pipe(
+      tap(_ => this.log(`updated menuType id=${menuType.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
 
     //------TAG METHODS -------
     getTags(): Observable<Tag[]> {
