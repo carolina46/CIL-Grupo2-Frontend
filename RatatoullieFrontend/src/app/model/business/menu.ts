@@ -1,8 +1,8 @@
-import { Tag } from "./tag";
-import { MenuType } from "./menu-type";
+import { Tag } from './tag';
+import { MenuType } from './menu-type';
 
 export class Menu {
-    id: number;
+    oid: number;
     name: string;
     tags: Tag[];
     type: MenuType;
