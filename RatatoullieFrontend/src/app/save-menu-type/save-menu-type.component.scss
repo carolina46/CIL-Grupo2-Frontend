@@ -85,7 +85,8 @@ p {
 }
 
 input[type=text], textarea {
-    background-color : #aca760;
+    //background-color : #aca760;
+    background: rgba(172,167,96,0.7);
     width: 100%; /* Full width */
     padding: 12px; /* Some padding */  
     border-radius: 6px; /* Rounded borders */
@@ -100,7 +101,8 @@ input[type=text], textarea {
 	-moz-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	-webkit-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	box-shadow: 0px 0px 0px 1px #9fb4f2;
-    background-color : #aca760;
+      //background-color : #aca760;
+      background: rgba(148, 142, 64, 0.7);
 	-moz-border-radius:13px;
 	-webkit-border-radius:13px;
 	border-radius:10px;
@@ -128,7 +130,8 @@ ul{
     -moz-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	-webkit-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	box-shadow: 0px 0px 0px 1px #9fb4f2;
-    background-color : #aca760;
+      //background-color : #aca760;
+      background: rgba(172,167,96,0.7);
 	-moz-border-radius:13px;
 	-webkit-border-radius:13px;
 	border-radius:10px;
@@ -149,7 +152,8 @@ ul{
     margin-right: 10px;
     display: inline-block;
     border-radius:10px;
-    background-color : #aca760;
+     //background-color : #aca760;
+     background: rgba(172,167,96,0.7);
     //background-color:#beba86;
    
 }
@@ -171,4 +175,9 @@ ul{
 
 #buttonEdit:hover {
 	background-color:#beba86;
+}
+
+img{
+    width: 90%;
+    height: 90%
 }

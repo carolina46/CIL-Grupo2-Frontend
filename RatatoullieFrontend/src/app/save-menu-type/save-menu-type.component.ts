@@ -30,11 +30,15 @@ export class SaveMenuTypeComponent implements OnInit {
       this.submited=true;
     }
     else{
+      let aux= new MenuType();
+      this.restaurantQueryService.saveMenuType(this.menuType).subscribe(menuType => {
+        aux=menuType;
+      });
       this.submited=false;
       this.menuType.name="";
-      this.restaurantQueryService.saveMenuType(this.menuType).subscribe(mt => {
-        this.menuTypes.push(mt);
-      });
+      if(aux.name.length>0){
+        this.menuTypes.push(aux);
+      }
     }  
   }
 
