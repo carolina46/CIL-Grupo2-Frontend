@@ -51,13 +51,13 @@ export class RestaurantQueryService {
   saveMenuType(menuType: MenuType): Observable<MenuType> {
     const body = JSON.stringify({ menuType });
     return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
-      tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.id}`)),
+      tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.oid}`)),
       catchError(this.handleError<MenuType>('addMenuType'))
     );
   }
 
   deleteMenuType (menuType: MenuType): Observable<MenuType> {
-    const id = typeof menuType.id;
+    const id = typeof menuType.oid;
     const url = `${this.url}/menuType/delete/${id}`;
     return this.http.delete<MenuType>(url, this.header).pipe(
       tap(_ => this.log(`deleted MenuType id=${id}`)),
@@ -67,7 +67,7 @@ export class RestaurantQueryService {
 
   updateMenuType (menuType: MenuType): Observable<any> {
     return this.http.put(this.url + 'menuType/update', menuType, this.header).pipe(
-      tap(_ => this.log(`updated menuType id=${menuType.id}`)),
+      tap(_ => this.log(`updated menuType id=${menuType.oid}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
