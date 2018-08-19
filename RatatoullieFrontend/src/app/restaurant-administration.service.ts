@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { Component } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,6 @@ export class RestaurantAdministrationService {
 
   /** POST: add a new category to the server */
   addCategory (category: Category): Observable <Category> {
-    console.log(`addCategory to ${this.categoryPostURL} the cat: ${category.name}`);
     const jsonCategory = JSON.stringify(category);
     return this.http.post<Category>(this.categoryPostURL, jsonCategory, this.httpOptions).pipe(
       tap((category: Category) => this.log(`added category w/ id=${category.oid}`)),
