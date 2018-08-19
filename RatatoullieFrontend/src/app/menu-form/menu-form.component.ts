@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuTypeService } from '../menu-type.service';
 import { RestaurantQueryService } from '../restaurant-query.service';
 import { Menu } from '../model/business/menu';
 import { MenuType } from '../model/business/menu-type';
@@ -25,7 +26,9 @@ export class MenuFormComponent implements OnInit {
   onSubmit() { this.submitted = true;
     this.router.navigate(['/principal']); }
 
-  constructor(private restaurantQueryService: RestaurantQueryService, private router: Router) { }
+  constructor(private menuTypeService : MenuTypeService, 
+              private restaurantQueryService : RestaurantQueryService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getMenuTypes();
@@ -33,7 +36,7 @@ export class MenuFormComponent implements OnInit {
   }
 
   getMenuTypes(): void {
-    this.restaurantQueryService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
+    this.menuTypeService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
   }
 
   getTags(): void {

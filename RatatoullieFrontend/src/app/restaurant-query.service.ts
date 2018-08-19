@@ -8,8 +8,6 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { Tag } from './model/business/tag';
-import { MenuType } from './model/business/menu-type';
-
 
 @Injectable({
   providedIn: 'root'
@@ -41,39 +39,7 @@ export class RestaurantQueryService {
       );
   }
 
-  // ------MENU TYPE METHODS -------
-  getMenuTypes(): Observable<MenuType[]> {
-    return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
-      .pipe(tap(menuType => this.log('menuTypes retrieved')),
-      catchError(this.handleError('getMenuTypes', [])));
-  }
-
-  saveMenuType(menuType: MenuType): Observable<MenuType>{
-   let body = JSON.stringify(menuType); 
-    return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
-      tap((menuType: MenuType) => this.log(`added MenuType w/ id=${menuType.oid}`)),
-      catchError(this.handleError<MenuType>('addMenuType'))
-    );
-  }
-
-  deleteMenuType (menuType: MenuType): Observable<Boolean> {
-    const id = menuType.oid;
-    const url = `${this.url}menuType/delete/${id}`;
-    return this.http.delete<Boolean>(url, this.header).pipe(
-      tap(res => this.log(`deleted MenuType id=${id}`),
-      catchError(this.handleError<MenuType>('deleteMenuType'))));
-  }
-
-  updateMenuType (menuType: MenuType): Observable<Boolean> {
-    let body = JSON.stringify(menuType); 
-    return this.http.put<MenuType>(this.url + 'menuType/update', body, this.header).pipe(
-      tap(res=> this.log(`updated menuType id=${menuType.oid}`)),
-      catchError(this.handleError<any>('updateMenuType'))
-    );
-  }
-
-
-    // ------TAG METHODS -------
+  // ------TAG METHODS -------
     getTags(): Observable<Tag[]> {
       return this.http.get<Tag[]>(this.url + '/tag/list')
         .pipe(tap(tag => this.log('tag retrieved')),

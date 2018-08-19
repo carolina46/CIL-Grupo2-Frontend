@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuType } from '../model/business/menu-type';
-import { RestaurantAdministrationService } from '../restaurant-administration.service';
-import { RestaurantQueryService } from '../restaurant-query.service';
+import { MenuTypeService } from '../menu-type.service';
 import { Console } from '@angular/core/src/console';
 
 @Component({
@@ -11,8 +10,7 @@ import { Console } from '@angular/core/src/console';
 })
 export class SaveMenuTypeComponent implements OnInit {
 
-  constructor(private restaurantAdministrationService: RestaurantAdministrationService,
-    private restaurantQueryService: RestaurantQueryService) { }
+  constructor(private menuTypeService: MenuTypeService) { }
 
   menuTypes: MenuType[]; // List of existing menuType
   submited: boolean; // To control that the name field contains something
@@ -32,7 +30,7 @@ export class SaveMenuTypeComponent implements OnInit {
     if (this.menuType.name.length == 0) { 
       this.submited = true;//Press the add button but the field name is empty
     } else {
-      this.restaurantQueryService.saveMenuType(this.menuType).subscribe(menuType => {
+      this.menuTypeService.saveMenuType(this.menuType).subscribe(menuType => {
         if(menuType.name.length>0){this.menuTypes.push(menuType);}
       });
       this.submited=false;//Reset form
@@ -42,13 +40,13 @@ export class SaveMenuTypeComponent implements OnInit {
   }
 
   deleteMenuType(menuType: MenuType): void {
-    this.restaurantQueryService.deleteMenuType(menuType).subscribe(deleted=>{
+    this.menuTypeService.deleteMenuType(menuType).subscribe(deleted=>{
     if(deleted){ this.menuTypes = this.menuTypes.filter(h => h !== menuType);}});
   }
 
   editMenuType() {
     this.menuTypeEdit=this.menuType;
-    this.restaurantQueryService.updateMenuType(this.menuTypeEdit).subscribe(updated => {
+    this.menuTypeService.updateMenuType(this.menuTypeEdit).subscribe(updated => {
       if(updated){this.menuTypes.push(this.menuTypeEdit); }});
     this.menuType = new MenuType();//Reset form
     this.menuType.name = '';//Reset form
@@ -56,7 +54,7 @@ export class SaveMenuTypeComponent implements OnInit {
   }
 
   getMenuTypes(): void {
-    this.restaurantQueryService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
+    this.menuTypeService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
   }
 
   buttonEdit(menuType: MenuType) {//To access to the edit form
