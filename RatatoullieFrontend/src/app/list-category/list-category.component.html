@@ -16,7 +16,7 @@
 <h1>Listado de Categor&iacute;as</h1>
 <ul>
 	<li *ngFor="let category of categories">
-	<span>{{category.name}}</span>
+	<label>ID: </label>{{category.oid}} <label>NAME:&nbsp;</label><span>{{category.name}}</span>
 	</li>
 </ul>
 
@@ -24,10 +24,9 @@
 <h3>New Category:</h3>
 <div>
   <label>Category name:
-    <input #categoryName />
+    <input type="text" id="name" [(ngModel)]="category.name"/>
   </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  &nbsp;<button (click)="add(categoryName.value); categoryName.value=''">
+  &nbsp;<button (click)="add();">
     Add
   </button>
 </div>

@@ -11,6 +11,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component
     PrincipalComponent,
     MenuFormComponent,
     DishFormComponent,
-    SaveMenuTypeComponent
+    SaveMenuTypeComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

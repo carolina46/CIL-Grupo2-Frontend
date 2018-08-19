@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuType } from '../model/business/menu-type';
+import { RestaurantAdministrationService } from '../restaurant-administration.service';
 import { RestaurantQueryService } from '../restaurant-query.service';
 import { Console } from '@angular/core/src/console';
 
@@ -10,7 +11,8 @@ import { Console } from '@angular/core/src/console';
 })
 export class SaveMenuTypeComponent implements OnInit {
 
-  constructor(private restaurantQueryService: RestaurantQueryService) { }
+  constructor(private restaurantAdministrationService: RestaurantAdministrationService,
+    private restaurantQueryService: RestaurantQueryService) { }
 
   menuTypes: MenuType[]; // List of existing menuType
   submited: boolean; // To control that the name field contains something

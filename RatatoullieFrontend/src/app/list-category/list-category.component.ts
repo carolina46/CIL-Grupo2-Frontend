@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class ListCategoryComponent implements OnInit {
 
-  @Input() category: Category;
+  category: Category;
   categories: Category[];
 
   constructor(private restaurantQueryService: RestaurantQueryService,
@@ -22,6 +22,8 @@ export class ListCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    this.category = new Category();
+    this.category.name = '';
   }
 
   getCategories(): void {
@@ -34,7 +36,8 @@ export class ListCategoryComponent implements OnInit {
 
   add(): void {
     this.restaurantAdministrationService.addCategory(this.category)
-    .subscribe(() => this.goBack);
+    .subscribe(category => this.category.oid = category.oid);
+    this.categories.push(this.category);
   }
 
 }
