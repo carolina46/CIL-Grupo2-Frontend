@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuType } from '../model/business/menu-type';
+import { RestaurantAdministrationService } from '../restaurant-administration.service';
 import { RestaurantQueryService } from '../restaurant-query.service';
 import { Console } from '@angular/core/src/console';
 
@@ -10,7 +11,8 @@ import { Console } from '@angular/core/src/console';
 })
 export class SaveMenuTypeComponent implements OnInit {
 
-  constructor(private restaurantQueryService: RestaurantQueryService) { }
+  constructor(private restaurantAdministrationService: RestaurantAdministrationService,
+    private restaurantQueryService: RestaurantQueryService) { }
 
   menuTypes: MenuType[]; // List of existing menuType
   submited: boolean; // To control that the name field contains something
@@ -30,23 +32,22 @@ export class SaveMenuTypeComponent implements OnInit {
       this.submited = true;
     } else {
       let aux = new MenuType();
-      this.restaurantQueryService.saveMenuType(this.menuType).subscribe(menuType => {
-        aux=menuType; if(aux.name.length>0){this.menuTypes.push(aux);}
+      this.restaurantAdministrationService.saveMenuType(this.menuType).subscribe(menuType => {
+        aux = menuType; if (aux.name.length > 0) { this.menuTypes.push(aux); }
       });
-      this.submited=false;
-      this.menuType.name="";
-      
-    }  
+      this.submited = false;
+      this.menuType.name = '';
+    }
   }
 
   delete(menuType: MenuType): void {
     this.menuTypes = this.menuTypes.filter(h => h !== menuType);
-    this.restaurantQueryService.deleteMenuType(menuType).subscribe();
+    this.restaurantAdministrationService.deleteMenuType(menuType).subscribe();
   }
 
   edit() {
     this.showAddForm = true; // show form add
-    this.restaurantQueryService.updateMenuType(this.menuType);
+    this.restaurantAdministrationService.updateMenuType(this.menuType);
     console.log(this.menuType.oid);
   }
 
