@@ -5,13 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { MenuType } from './model/business/menu-type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantAdministrationService {
 
-  private categoryPostURL = 'http://localhost:8080/Ratatoullie/category/categoryForm';
+  private url = 'http://localhost:8080/Ratatoullie/';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -20,12 +21,39 @@ export class RestaurantAdministrationService {
     private messageService: MessageService) {
    }
 
-  /** POST: add a new category to the server */
+  /** POST: add a new Category to the server */
   addCategory (category: Category): Observable <Category> {
     const jsonCategory = JSON.stringify(category);
-    return this.http.post<Category>(this.categoryPostURL, jsonCategory, this.httpOptions).pipe(
+    return this.http.post<Category>(this.url + 'category/categoryForm', jsonCategory, this.httpOptions).pipe(
       tap((cat: Category) => this.log(`added category w/ id=${cat.oid}`)),
       catchError(this.handleError<Category>('addCategory'))
+    );
+  }
+
+  /** POST: add a new MenuType to the server */
+  saveMenuType(menuType: MenuType): Observable<MenuType> {
+   const body = JSON.stringify(menuType);
+    return this.http.post<MenuType>(this.url + 'menuType/save', body, this.httpOptions).pipe(
+      tap((mt: MenuType) => this.log(`added MenuType w/ id=${mt.oid}`)),
+      catchError(this.handleError<MenuType>('addMenuType'))
+    );
+  }
+
+  /** DELETE: deletes a  MenuType from the server */
+  deleteMenuType (menuType: MenuType): Observable<MenuType> {
+    const id = typeof menuType.oid;
+    const url = `${this.url}/menuType/delete/${id}`;
+    return this.http.delete<MenuType>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted MenuType id=${id}`)),
+      catchError(this.handleError<MenuType>('deleteMenuType'))
+    );
+  }
+
+  /** PUT: updates a  MenuType in the server */
+  updateMenuType (menuType: MenuType): Observable<any> {
+    return this.http.put(this.url + 'menuType/update', menuType, this.httpOptions).pipe(
+      tap(_ => this.log(`updated menuType id=${menuType.oid}`)),
+      catchError(this.handleError<any>('updateHero'))
     );
   }
 
