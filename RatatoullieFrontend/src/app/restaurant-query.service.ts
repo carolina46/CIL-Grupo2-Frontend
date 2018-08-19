@@ -7,8 +7,9 @@ import { Category } from './model/business/category';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { MenuType } from './model/business/menu-type';
 import { Tag } from './model/business/tag';
+import { MenuType } from './model/business/menu-type';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,6 @@ export class RestaurantQueryService {
 
   private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
   private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
-
 
   // ------CATEGORY METHODS -------
   // Returns an Observable array of Categories, save in the log and handles error if any
@@ -48,38 +48,12 @@ export class RestaurantQueryService {
       catchError(this.handleError('getMenuTypes', [])));
   }
 
-  saveMenuType(menuType: MenuType): Observable<MenuType> {
-   const body = JSON.stringify(menuType);
-    return this.http.post<MenuType>(this.url + 'menuType/save', body, this.header).pipe(
-      tap((mt: MenuType) => this.log(`added MenuType w/ id=${menuType.oid}`)),
-      catchError(this.handleError<MenuType>('addMenuType'))
-    );
-  }
-
-  deleteMenuType (menuType: MenuType): Observable<MenuType> {
-    const id = typeof menuType.oid;
-    const url = `${this.url}/menuType/delete/${id}`;
-    return this.http.delete<MenuType>(url, this.header).pipe(
-      tap(_ => this.log(`deleted MenuType id=${id}`)),
-      catchError(this.handleError<MenuType>('deleteMenuType'))
-    );
-  }
-
-  updateMenuType (menuType: MenuType): Observable<any> {
-    return this.http.put(this.url + 'menuType/update', menuType, this.header).pipe(
-      tap(_ => this.log(`updated menuType id=${menuType.oid}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
-  }
-
-
-    // ------TAG METHODS -------
-    getTags(): Observable<Tag[]> {
-      return this.http.get<Tag[]>(this.url + '/tag/list')
+  // ------TAG METHODS -------
+  getTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(this.url + '/tag/list')
         .pipe(tap(tag => this.log('tag retrieved')),
         catchError(this.handleError('getTags', [])));
-    }
-
+  }
 
   // ------HandleError METHODS -------
   // Send the message log to the Message Service
