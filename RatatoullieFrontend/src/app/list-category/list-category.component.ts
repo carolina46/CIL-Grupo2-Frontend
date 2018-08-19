@@ -36,7 +36,7 @@ export class ListCategoryComponent implements OnInit {
 
   add(): void {
     this.restaurantAdministrationService.addCategory(this.category)
-    .subscribe(category => this.category = category);
+    .subscribe(category => this.category.oid = category.oid);
     this.categories.push(this.category);
   }
 
