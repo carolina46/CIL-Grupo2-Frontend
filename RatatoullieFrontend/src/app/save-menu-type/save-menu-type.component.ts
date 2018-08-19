@@ -16,6 +16,7 @@ export class SaveMenuTypeComponent implements OnInit {
   submited: boolean; // To control that the name field contains something
   menuType: MenuType; // Auxiliary variable to save changes
   showAddForm: boolean; // To control whether the add or edit form is displayed
+  menuTypeEdit: MenuType;//To save the menuType to edit in case they cancel the operation
 
   ngOnInit() {
     this.getMenuTypes();
@@ -26,41 +27,47 @@ export class SaveMenuTypeComponent implements OnInit {
   }
 
   agregar() {
-    if (this.menuType.name.length == 0) {
-      this.submited = true;
+    if (this.menuType.name.length == 0) { 
+      this.submited = true;//Press the add button but the field name is empty
     } else {
-      let aux = new MenuType();
       this.restaurantQueryService.saveMenuType(this.menuType).subscribe(menuType => {
-        aux=menuType; if(aux.name.length>0){this.menuTypes.push(aux);}
+        if(menuType.name.length>0){this.menuTypes.push(menuType);}
       });
-      this.submited=false;
-      this.menuType.name="";
+      this.submited=false;//Reset form
+      this.menuType.name="";//Reset form
       
     }  
   }
 
-  delete(menuType: MenuType): void {
-    this.menuTypes = this.menuTypes.filter(h => h !== menuType);
-    this.restaurantQueryService.deleteMenuType(menuType).subscribe();
+  deleteMenuType(menuType: MenuType): void {
+    this.restaurantQueryService.deleteMenuType(menuType).subscribe(deleted=>{
+    if(deleted){ this.menuTypes = this.menuTypes.filter(h => h !== menuType);}});
   }
 
-  edit() {
-    this.showAddForm = true; // show form add
-    this.restaurantQueryService.updateMenuType(this.menuType);
-    console.log(this.menuType.oid);
+  editMenuType() {
+    this.menuTypeEdit=this.menuType;
+    this.restaurantQueryService.updateMenuType(this.menuTypeEdit).subscribe(updated => {
+      if(updated){this.menuTypes.push(this.menuTypeEdit); }});
+    this.menuType = new MenuType();//Reset form
+    this.menuType.name = '';//Reset form
+    this.showAddForm = true; // exit form edit and show form add
   }
 
   getMenuTypes(): void {
     this.restaurantQueryService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
   }
 
-  buttonEdit(menuType: MenuType) {
-    this.menuType = menuType;
-    this.showAddForm = false; // show form edit
+  buttonEdit(menuType: MenuType) {//To access to the edit form
+    this.menuTypeEdit=menuType;//I save it to be used in buttonCancelEdit
+    this.menuTypes = this.menuTypes.filter(h => h !== menuType);//Delete from the list
+    this.menuType = menuType; //To show the name of the menutype to edit in the form
+    this.showAddForm = false; //show form edit
   }
-  buttonCancelEdit() {
-    this.menuType = new MenuType();
-    this.menuType.name = '';
+
+  buttonCancelEdit() {//Not make the change
+    this.menuType = new MenuType(); //Reset form
+    this.menuType.name = ''; //Reset form
     this.showAddForm = true; // show form add
+    this.menuTypes.push(this.menuTypeEdit); //I return it to the list of menuTypes
   }
 }

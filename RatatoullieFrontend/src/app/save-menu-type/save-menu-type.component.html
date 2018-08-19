@@ -27,7 +27,7 @@
                             <button type="button" class="submit" (click)="agregar();">Agregar</button>
                         </div>
                         <ng-template #editFormButtons>
-                            <button type="button" id="buttonEdit" (click)="edit();">Editar</button>
+                            <button type="button" id="buttonEdit" (click)="editMenuType();">Aceptar</button>
                             <button type="button" id="buttonEdit" (click)="buttonCancelEdit();">Cancelar</button>
                         </ng-template>
                         
@@ -42,7 +42,7 @@
                   <ul>
                       <li *ngFor="let type of menuTypes">
                       <span id="itemList">{{type.name}}</span>
-                      <button id="buttonList" type="button" (click)="delete(type);"><img src="../../assets/images/deleteW.png"></button>
+                      <button id="buttonList" type="button" (click)="deleteMenuType(type);"><img src="../../assets/images/deleteW.png"></button>
                       <button id="buttonList" type="button" (click)="buttonEdit(type);"><img src="../../assets/images/editW.png"></button>
                       </li>
                   </ul>
