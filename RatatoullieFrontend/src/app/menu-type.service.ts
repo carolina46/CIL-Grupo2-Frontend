@@ -18,7 +18,7 @@ export class MenuTypeService {
  
   /** POST: add a new Category to the server */
   getMenuTypes(): Observable<MenuType[]> {
-    return this.http.get<MenuType[]>('http://localhost:8080/Ratatoullie/menuType/list')
+    return this.http.get<MenuType[]>(this.url + 'menuType/list')
       .pipe(tap(menuType => this.log('menuTypes retrieved')),
       catchError(this.handleError('getMenuTypes', [])));
   }
