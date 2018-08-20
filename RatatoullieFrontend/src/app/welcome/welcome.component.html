@@ -1,0 +1,62 @@
+<header>
+  <div id="menu">
+      <div  id="logo">
+          <a routerLink="/">RATATOULLIE</a>
+      </div>
+      <nav>
+          <ul>    
+              <form (ngSubmit)="logIn()" #logInForm="ngForm">
+                <input type="text" placeholder=" Username" name="Username" [(ngModel)]="login.user" required>
+                <input type="password" placeholder=" Password" name="Password" [(ngModel)]="login.password" required>
+                <button type="submit" id="submit">Ingresar</button>
+              </form>
+          </ul>
+      </nav>
+  </div>
+</header>
+
+<div id="body">
+    <div *ngIf="!showSignInForm; else signInForm">
+      <h1 class="animated zoomIn">RATATOULLIE</h1>	
+      <P class="animated zoomInDown">
+        El lugar donde encontraras toda la informaci&oacute;n sobre los mejores restaurantes.
+        <br>
+        Mira de forma r&aacute;pida y f&aacute;cil los men&uacute;s y platos disponibles.
+        <br>
+        Comenta - Vota - Recomienda
+        <br>
+        &uacute;nite a nosotros!
+      </P>
+      <button type="button" class="animated zoomInDown"  id="buttonForm" (click)="showFormSignIn();">Registrarse</button>
+    </div>
+    <ng-template #signInForm>
+      <div id="form"> 
+            <p>Registrarse</p><br>
+            <form #aSignInForm="ngForm">
+              <div id="label">
+                <label for="fullName">Nombre</label>
+                <input type="text" id="fullName" name="fullName" required [(ngModel)]="signIn.fullName">
+              </div>
+              <div id="label">
+                <label for="user">Nombre de usuario</label>
+                <input type="text" id="user" name="user" required [(ngModel)]="signIn.user">
+              </div>
+              <div id="label">
+                  <label for="password">Clave</label>
+                  <input type="text" id="password" required name="password" [(ngModel)]="signIn.password">
+              </div>
+              <div id="label">
+                  <label for="responsible">¿Posee un restaurante?</label>
+                  <input type="radio" name="responsible" [(ngModel)]="responsible" value="true">Sí
+                  <input type="radio" name="responsible" [(ngModel)]="responsible" value="false">No
+              </div>
+
+            <br>
+            <button type="submit" class="submit"  id="buttonForm" (onClick)="signIn();"> Aceptar </button>
+            <button type="button" class="submit"  id="buttonForm" (onClick)="cancelSignIn();"> Cancelar </button>
+                        
+        </form>
+      </div>
+    </ng-template>
+   
+</div>

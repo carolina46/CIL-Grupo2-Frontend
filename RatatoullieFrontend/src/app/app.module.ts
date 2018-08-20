@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -12,6 +11,7 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 import { MessagesComponent } from './messages/messages.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { MessagesComponent } from './messages/messages.component';
     MenuFormComponent,
     DishFormComponent,
     SaveMenuTypeComponent,
-    MessagesComponent
+    MessagesComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

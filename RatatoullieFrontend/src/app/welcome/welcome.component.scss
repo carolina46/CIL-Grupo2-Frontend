@@ -1,0 +1,153 @@
+header{
+    width: 100%;
+    height: 60px;
+    background: rgba(26,188,156,0.7);
+    position: fixed; //Deja menu fijo.
+    //Sombra
+    -webkit-box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 6px 18px 2px rgba(0,0,0,0.75);
+}
+  
+#menu{ 
+    width: 80%;
+    height: 60px;
+    margin: auto;
+}
+  
+#logo {
+    float: left;
+    width:30%;
+    height:60px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+  
+#logo a {
+    color: #fff;
+    font-size: 22px;
+    text-decoration: none;
+    font-family: Merienda;
+    text-shadow: -1px -1px 1px #000;
+}
+  
+#logo a:hover{
+    color: #444;
+}
+  
+nav{
+    width: 70%;
+    height: 60px;
+    text-align: right;
+    float:  left;
+    padding: 15px;
+    box-sizing: border-box;
+}
+  
+nav ul li{
+    display: inline;
+}
+  
+input[type=text], input[type=password], input[type=radio], textarea {
+    background: rgba(172,167,96,0.7);
+    border-radius: 6px; /* Rounded borders */
+    margin-left: 10px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:#fff;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+#submit {
+    background: rgba(172,167,96,0.7);
+	border-radius: 6px; /* Rounded borders */
+    padding-left: 5px;
+    padding-right: 5px;   
+    text-decoration:none;
+    color:#fff;
+    margin-left: 10px;
+}
+
+#submit:hover {
+    background: rgba(148, 142, 64, 0.7);
+	//background-color:#beba86;
+}
+
+//Fuente: https://www.youtube.com/watch?v=LFmEe-Dm4MA
+//-------------------------------------
+
+#body {
+    padding-top: 150px;
+    text-align: center;
+}
+
+#body h1{
+    color: #fff;
+    font-size: 80px;
+    text-shadow: -2px -2px 1px #000;
+}
+#body p{
+    padding-top: 30px;
+    color: #fff;
+    font-size: 19px;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#buttonForm {
+    background: rgba(133, 128, 62, 0.7);
+	border-radius: 4px; /* Rounded borders */
+    padding : 10px;   
+    text-decoration:none;
+    color:#fff;
+    margin-left: 10px;
+}
+
+#buttonForm:hover {
+    background-color:#beba86;
+}
+
+#form {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    background: rgba(26,188,156,0.7);
+    -webkit-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:13px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#form form{
+    display: inline-block;
+    width: 90%;
+}
+
+#label {text-align: left;
+margin-bottom: 10px;} 
+
+#label label{
+    width: 45%;
+}
+
+
+//To indicate if the field is empty or not
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid rgb(56, 136, 60); /* green */
+  }
+  
+.ng-invalid:not(form)  {
+    border-left: 5px solid rgba(155, 47, 47, 0.7); /* red */
+  }
