@@ -1,5 +1,7 @@
-<app-menu *ngIf="userIsLogin;"></app-menu>
-<router-outlet *ngIf="userIsLogin; else isNotLogin"></router-outlet>
+<div *ngIf="userIsLogin; else isNotLogin">
+        <app-menu></app-menu>
+        <router-outlet></router-outlet>
+</div>
 <ng-template #isNotLogin>
         <app-welcome></app-welcome>
 </ng-template>
