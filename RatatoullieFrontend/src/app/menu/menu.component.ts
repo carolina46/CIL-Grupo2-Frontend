@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageServiceService } from '../local-storage-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorage: LocalStorageServiceService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
+  userLogout(){
+    this.localStorage.removeUserFromLocalStorage();
+    this.router.navigate(['/']);
+    location.reload();
+  }
 }

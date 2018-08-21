@@ -35,6 +35,7 @@ header{
   color: #444;
 }
 
+
 nav{
   width: 70%;
   height: 60px;
@@ -64,9 +65,20 @@ nav ul li a:hover{
   cursor: pointer;
 }
 
-@font-face{
-  font-family: Merienda;
-  src: url(../../assets/fonts/Merienda-Regular.ttf);
+#button {
+  background: rgba(133, 128, 62, 0.7);
+  border-radius: 4px; /* Rounded borders */
+  padding : 5px;   
+  padding-left : 10px; 
+  padding-right : 10px; 
+  text-decoration:none;
+  color:#fff;
+  margin-left: 10px;
+}
+
+.messages {
+  padding-top: 50px;
+  text-align: center;
 }
 
 //Fuente: https://www.youtube.com/watch?v=LFmEe-Dm4MA
