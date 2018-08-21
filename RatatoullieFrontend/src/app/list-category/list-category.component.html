@@ -1,33 +1,17 @@
 <div id="cuerpo">
-		<h1 class="animated zoomIn">RATATOULLIE</h1>	
-		<P class="animated zoomInDown">
-			El lugar donde encontraras toda la informaci&oacute;n sobre los mejores restaurantes.
-			<br>
-			Mira de forma r&aacute;pida y f&aacute;cil los men&uacute;s y platos disponibles.
-			<br>
-			Comenta - Vota - Recomienda
-			<br>
-			&uacute;nite a nosotros!
-		</P>
+	<h1>Listado de Categor&iacute;as</h1>
+	<ul>
+		<li *ngFor="let category of categories">
+			<label>ID: </label>{{category.oid}} <label>NAME:&nbsp;</label><span>{{category.name}}</span>
+		</li>
+	</ul>
 
-</div>
-
-<div>
-<h1>Listado de Categor&iacute;as</h1>
-<ul>
-	<li *ngFor="let category of categories">
-	<label>ID: </label>{{category.oid}} <label>NAME:&nbsp;</label><span>{{category.name}}</span>
-	</li>
-</ul>
-
-<!--  Input for adding a new Category -->
-<h3>New Category:</h3>
-<div>
-  <label>Category name:
-    <input type="text" id="name" [(ngModel)]="category.name"/>
-  </label>
-  &nbsp;<button (click)="add();">
-    Add
-  </button>
-</div>
+	<!--  Input for adding a new Category -->
+	<h3>New Category:</h3>
+	<div>
+		<label>Category name:
+			<input type="text" id="name" [(ngModel)]="category.name"/>
+		</label>
+		&nbsp;<button (click)="add();">	Add</button>
+	</div>
 </div>
