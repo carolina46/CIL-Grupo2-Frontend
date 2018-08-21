@@ -4,6 +4,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StorageServiceModule } from 'angular-webstorage-service';
 import { MenuComponent } from './menu/menu.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -30,7 +31,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule 
 
   ],
   providers: [],
