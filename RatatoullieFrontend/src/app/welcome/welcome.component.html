@@ -1,7 +1,7 @@
 <header>
   <div id="menu">
       <div  id="logo">
-          <a routerLink="/">RATATOULLIE</a>
+          <a routerLink="/principal">RATATOULLIE</a>
       </div>
       <nav>
           <ul>    
@@ -30,7 +30,7 @@
       <button type="button" class="animated zoomInDown"  id="buttonForm" (click)="showFormSignIn();">Registrarse</button>
     </div>
     <ng-template #signInForm>
-      <div id="form"> 
+      <div id="form" class="bounceIn"> 
             <p>Registrarse</p><br>
             <form #aSignInForm="ngForm">
               <div id="label">
@@ -52,8 +52,8 @@
               </div>
 
             <br>
-            <button type="submit" class="submit"  id="buttonForm" (onClick)="signIn();"> Aceptar </button>
-            <button type="button" class="submit"  id="buttonForm" (onClick)="cancelSignIn();"> Cancelar </button>
+            <button type="submit" class="submit"  id="buttonForm" (click)="singIn();"> Aceptar </button>
+            <button type="button" class="submit"  id="buttonForm" (click)="cancelSignIn();"> Cancelar </button>
                         
         </form>
       </div>
