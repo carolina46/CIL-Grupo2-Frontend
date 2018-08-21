@@ -4,5 +4,5 @@ export class RestaurantRecommendation {
     id: number;
     restaurant: Restaurant;
     description: string
-    receivers: Client[];
+    //receivers: Client[];
 }

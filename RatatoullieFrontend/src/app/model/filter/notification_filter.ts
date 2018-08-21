@@ -1,6 +1,6 @@
-import { Responsible } from "../users/responsible";
+//import { Responsible } from "../users/responsible";
 
 export class NotificationFilter {
     id: number;
-    responsible: Responsible;
+    //responsible: Responsible;
 }

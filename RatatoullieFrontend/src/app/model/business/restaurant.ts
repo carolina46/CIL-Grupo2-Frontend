@@ -1,8 +1,8 @@
 import { Category } from "./category";
 import { Menu } from "./menu";
-import { Comment } from "./comment";
-import { CommentFilter } from "../filter/commentfilter";
-import { NotificationFilter } from "../filter/notificationfilter";
+//import { Comment } from "./comment";
+import { CommentFilter } from "../filter/comment_filter";
+import { NotificationFilter } from "../filter/notification_filter";
 
 export class Restaurant {
     id: number;
