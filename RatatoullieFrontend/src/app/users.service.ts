@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Login } from './model/users/login';
 import { MessageService } from './message.service';
+import { Signin } from './model/users/signin';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,25 @@ export class UsersService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
 
-  //Find out if it is a registered user
-  checkUser (logIn : Login) {
-    this.http.get( this.url + 'users/checkUser')
-    .pipe(tap(_ => this.log('Confirmed user')),
-    catchError(this.handleError('getMenuTypes', [])));
+  //Find out if the user exist
+  checkUser (signin : Signin) :  Observable<Boolean> {
+    const user = signin.user;
+    const url = `${this.url}users/checkUser/${user}`;
+    return this.http.get<Boolean>(url, this.header).pipe(
+      tap(res => this.log(`Check user=${user}`),
+      catchError(this.handleError<Boolean>('Check user'))));
   }
+
+ /** POST: add a new user to the server */
+ saveUser (signin : Signin, responsible : Boolean) :  Observable<Boolean> {
+  let url = ( responsible == true ? 'users/saveResponsible' : 'users/saveNormal' );
+  let body = JSON.stringify(signin); 
+  return this.http.post<Boolean>(this.url + url, body, this.header).pipe(
+     tap(res => this.log(`added User ${signin.user}`)),
+     catchError(this.handleError<Boolean>('addUser'))
+   );
+ }
+
 
 
   // Send the message log to the Message Service

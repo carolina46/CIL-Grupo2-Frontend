@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'menuForm', component: MenuFormComponent },
   { path: 'dishForm', component: DishFormComponent },
   { path: 'saveMenuType', component: SaveMenuTypeComponent },
+  {  path: '**', redirectTo: '/principal'} //It should always be at the end of the list
 
 ];
 

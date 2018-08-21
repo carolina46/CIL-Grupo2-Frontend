@@ -23,16 +23,22 @@ header{
     box-sizing: border-box;
 }
   
-#logo a {
+#buttonLogo {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
     color: #fff;
     font-size: 22px;
-    text-decoration: none;
-    font-family: Merienda;
     text-shadow: -1px -1px 1px #000;
 }
-  
-#logo a:hover{
-    color: #444;
+
+
+#buttonLogo:hover{
+    text-shadow: -3px -3px 3px #000;
+    color: rgb(243, 221, 221);
 }
   
 nav{
@@ -151,3 +157,41 @@ margin-bottom: 10px;}
 .ng-invalid:not(form)  {
     border-left: 5px solid rgba(155, 47, 47, 0.7); /* red */
   }
+
+//Some fields are empty
+#messageError{
+    margin-left: 25%;
+}
+
+#messageError p{
+    color:rgba(155, 47, 47, 0.7); 
+    text-shadow: -1px -1px 1px #000;
+    font-size: 15px;
+}
+
+//User exist
+#messageError2{
+   text-align: center;
+}
+
+#messageError2 p{
+    color:rgba(155, 47, 47, 0.7); 
+    text-shadow: -1px -1px 1px #000;
+    font-size: 15px;
+}
+
+
+#registrationResult{
+    width: 30%;
+    display: inline-block;
+    padding: 20px;
+    background: rgba(26,188,156,0.7);
+    -webkit-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:13px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+}
