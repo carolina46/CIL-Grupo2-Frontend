@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/principal', pathMatch: 'full' },
   { path: 'listCategories', component: ListCategoryComponent },
   { path: 'principal', component: PrincipalComponent },
   { path: 'menuForm', component: MenuFormComponent },
