@@ -16,7 +16,7 @@ export class MenuTypeService {
 
   constructor(private http: HttpClient, private messageService: MessageService) {  }
  
-  /** POST: add a new Category to the server */
+  /** GET: get a list of menuTypes from the server */
   getMenuTypes(): Observable<MenuType[]> {
     return this.http.get<MenuType[]>(this.url + 'menuType/list')
       .pipe(tap(menuType => this.log('menuTypes retrieved')),
