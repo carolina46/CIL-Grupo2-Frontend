@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "angular-web-storage": "^3.0.0",
     "angular-webstorage-service": "^1.0.2",
     "core-js": "^2.5.4",
     "npm": "^5.6.0",
