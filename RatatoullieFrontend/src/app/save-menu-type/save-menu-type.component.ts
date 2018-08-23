@@ -24,6 +24,7 @@ export class SaveMenuTypeComponent implements OnInit {
     this.menuType.name = '';
     this.submited = false; // Did not press the add button
     this.showAddForm = true;
+    this.menuTypeEdit = new MenuType();
   }
 
   agregar() {
@@ -44,10 +45,10 @@ export class SaveMenuTypeComponent implements OnInit {
     if(deleted){ this.menuTypes = this.menuTypes.filter(h => h !== menuType);}});
   }
 
-  editMenuType() {
-    this.menuTypeEdit=this.menuType;
-    this.menuTypeService.updateMenuType(this.menuTypeEdit).subscribe(updated => {
-      if(updated){this.menuTypes.push(this.menuTypeEdit); }});
+  editMenuType() {//save change in bd
+    let mt = this.menuType;
+    this.menuTypeService.updateMenuType(this.menuType).subscribe(updated => {
+      if(updated){this.menuTypes.push(mt); }});
     this.menuType = new MenuType();//Reset form
     this.menuType.name = '';//Reset form
     this.showAddForm = true; // exit form edit and show form add
@@ -57,17 +58,19 @@ export class SaveMenuTypeComponent implements OnInit {
     this.menuTypeService.getMenuTypes().subscribe(menuTypes => this.menuTypes = menuTypes);
   }
 
-  buttonEdit(menuType: MenuType) {//To access to the edit form
-    this.menuTypeEdit=menuType;//I save it to be used in buttonCancelEdit
-    this.menuTypes = this.menuTypes.filter(h => h !== menuType);//Delete from the list
-    this.menuType = menuType; //To show the name of the menutype to edit in the form
+  buttonEdit(mt: MenuType) {//To access to the edit form
+    this.menuTypeEdit=mt;//I save it to be used in buttonCancelEdit
+    this.menuTypes = this.menuTypes.filter(h => h !== mt);//Delete from the list
+    this.menuType.name = mt.name; //To show the name of the menutype to edit in the form
+    this.menuType.oid = mt.oid;
     this.showAddForm = false; //show form edit
   }
 
   buttonCancelEdit() {//Not make the change
+    this.menuTypes.push(this.menuTypeEdit); //I return it to the list of menuTypes
     this.menuType = new MenuType(); //Reset form
     this.menuType.name = ''; //Reset form
     this.showAddForm = true; // show form add
-    this.menuTypes.push(this.menuTypeEdit); //I return it to the list of menuTypes
+    
   }
 }
