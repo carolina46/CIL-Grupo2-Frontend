@@ -5,7 +5,7 @@ import { CommentFilter } from "../filter/comment_filter";
 import { NotificationFilter } from "../filter/notification_filter";
 
 export class Restaurant {
-    id: number;
+    oid: number;
     name: string;
     category: Category;
     menus: Menu[];

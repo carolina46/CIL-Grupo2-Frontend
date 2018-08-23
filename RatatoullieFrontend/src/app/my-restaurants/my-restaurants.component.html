@@ -6,21 +6,11 @@
   </div>
   <hr/>
   <div id="restaurantsDiv">
-    <div id="restaurantItem">
-        <p>MC DONALS</p>
-        <p>Fast Food</p>
-        <p>Calle 8, entre 50 y 51 - La plata</p>
-
-    </div> 
-    <div id="restaurantItem">
-        <p>Los panqueques de Carlitos</p>
-        <p>Restaurant</p>
-        <p>Calle 15, entre 33 y 34 - La plata</p>
-    </div> 
-    <div id="restaurantItem">
-        <p>YAYI</p>
-        <p>Pizzeria</p>
-        <p>Calle 1, entre 60 y 34 - La plata</p>
-    </div>
+    <a *ngFor="let restaurant of restaurants" [routerLink]="['/myRestaurants/restaurant', restaurant.oid]">
+        <div id="restaurantItem">
+            <p>{{restaurant.name}}</p>
+            <p>{{restaurant.category.name}}</p>
+        </div> 
+    </a>
   </div>
 </div>
