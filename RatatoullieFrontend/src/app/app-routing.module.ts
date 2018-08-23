@@ -6,6 +6,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
+import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'dishForm', component: DishFormComponent },
   { path: 'saveMenuType', component: SaveMenuTypeComponent },
   { path: 'myRestaurants', component: MyRestaurantsComponent },
+  { path: 'myRestaurants/restaurant/:id', component: MyRestaurantComponent },
   {  path: '**', redirectTo: '/principal'} //It should always be at the end of the list
 
 ];

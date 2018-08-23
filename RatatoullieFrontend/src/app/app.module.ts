@@ -14,6 +14,7 @@ import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component
 import { MessagesComponent } from './messages/messages.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
+import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.componen
     MessagesComponent,
     WelcomeComponent,
     MyRestaurantsComponent,
+    MyRestaurantComponent,
   ],
   imports: [
     BrowserModule,
