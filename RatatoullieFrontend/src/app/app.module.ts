@@ -13,6 +13,7 @@ import { DishFormComponent } from './dish-form/dish-form.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 import { MessagesComponent } from './messages/messages.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SaveMenuTypeComponent,
     MessagesComponent,
     WelcomeComponent,
+    MyRestaurantsComponent,
   ],
   imports: [
     BrowserModule,
