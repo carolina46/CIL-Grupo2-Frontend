@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { UsersService } from '../users.service';
+import { LocalStorageServiceService } from '../local-storage-service.service';
+import { UserSession } from '../model/users/user-session';
+import { Restaurant } from 'src/app/model/business/restaurant';
 
 @Component({
   selector: 'app-my-restaurants',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyRestaurantsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usersService : UsersService,
+              private localStorage : LocalStorageServiceService,
+              private router : Router) { }
+
+  restaurants : Restaurant[];
 
   ngOnInit() {
+   /* let userSession = this.localStorage.getUserFromLocalStorage();
+    if(userSession.rol != "Administrator") this.router.navigate(['/principal']);
+    else this.getRestaurants(userSession);*/
   }
+
+
+
+getRestaurants( userSession : UserSession){
+  this.usersService.getMyRestaurants(userSession).subscribe(restaurants => this.restaurants = restaurants);
+}
 
 }

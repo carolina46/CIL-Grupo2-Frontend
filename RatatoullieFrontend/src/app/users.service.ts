@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Login } from './model/users/login';
 import { MessageService } from './message.service';
 import { Signin } from './model/users/signin';
+import { Restaurant } from './model/business/restaurant';
 import { UserSession } from 'src/app/model/users/user-session';
 
 @Injectable({
@@ -47,6 +48,14 @@ export class UsersService {
     );
  }
 
+ // ------- RESTAURAT METHODS -------------
+  // GET : get a list of restaurant from the server
+  getMyRestaurants(userSession : UserSession): Observable<Restaurant[]> {
+    const url = `${this.url}users/myRestaurants/${userSession.oid}`;
+    return this.http.get<Restaurant[]>(url)
+      .pipe(tap(restaurants => this.log('restaurants retrieved')),
+      catchError(this.handleError('getMyRestaurants', [])));
+  }
 
 
 
