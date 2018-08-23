@@ -1,17 +1,52 @@
-<div id="cuerpo">
-	<h1>Listado de Categor&iacute;as</h1>
-	<ul>
-		<li *ngFor="let category of categories">
-			<label>ID: </label>{{category.oid}} <label>NAME:&nbsp;</label><span>{{category.name}}</span>
-		</li>
-	</ul>
+<div id="frame">
+    <div id="frameTitle">
+          <H2>PANEL DE CONTROL</H2>
+          <H3>Categor&iacute;a</H3>
+    </div>
+    <div id="frameBody">
 
-	<!--  Input for adding a new Category -->
-	<h3>New Category:</h3>
-	<div>
-		<label>Category name:
-			<input type="text" id="name" [(ngModel)]="category.name"/>
-		</label>
-		&nbsp;<button (click)="add();">	Add</button>
-	</div>
+            <!--FORM TO ADD OR UPDATE A CATEGORY-->
+            <div id="frameAdd">
+                <div id="form"> 
+                        <div *ngIf="showAddForm; else editFormTitle"><p>Nuevo</p></div>
+                        <ng-template #editFormTitle><p>Editar</p></ng-template>
+
+                        <form (ngSubmit)="onSubmit()" #saveCategoryForm="ngForm">
+                        <div id="label">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required
+                                [(ngModel)]="category.name" name="name"
+                                #name="ngModel">
+                                <div *ngIf="(submited&&category.name.length==0)"  class="alert alert-danger">
+                                    Debes ingresar un nombre
+                                </div>
+                        </div>
+
+
+                        <div *ngIf="showAddForm; else editFormButtons">
+                            <button type="button" class="submit" (click)="add();">Agregar</button>
+                        </div>
+                        <ng-template #editFormButtons>
+                            <button type="button" id="buttonEdit" (click)="editCategory();">Aceptar</button>
+                            <button type="button" id="buttonEdit" (click)="buttonCancelEdit();">Cancelar</button>
+                        </ng-template>
+                        
+                        </form>
+                </div>
+            </div>
+
+          <!--LIST OF EXISTING MENU TYPE-->
+          <div id="frameList">
+              <div id="list">
+                  <p >Listado</p>
+                  <ul>
+                      <li *ngFor="let cat of categories">
+                      <span id="itemList">{{cat.name}}</span>
+                      <button id="buttonList" type="button" (click)="deleteMenuType(cat);"><img src="../../assets/images/deleteW.png"></button>
+                      <button id="buttonList" type="button" (click)="buttonEdit(cat);"><img src="../../assets/images/editW.png"></button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+    </div>
 </div>
