@@ -4,7 +4,15 @@
             <a routerLink="/principal">RATATOULLIE</a>
         </div>
         <nav>
-            <button type="button" class="submit"  id="button" (click)="userLogout();"> Salir </button>
+            <div class="dropDownMenu">
+                    <button type="button" (click)="showMenu()" class="dropButton"><img src="../../assets/images/menu.png"></button>
+                    <div *ngIf="buttonPressed" id="myDropdown" class="dropDown-content">
+                      <a href="#">Recomendaciones</a>
+                      <a href="#">Mis restaurantes</a>
+                      <a href="#">Notificaciones</a>
+                      <button type="button" id="buttonExit" (click)="userLogout();">Salir</button>
+                    </div>
+            </div>
         </nav>
     </div>
 </header>

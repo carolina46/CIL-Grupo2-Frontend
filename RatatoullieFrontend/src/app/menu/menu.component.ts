@@ -12,7 +12,10 @@ export class MenuComponent implements OnInit {
   constructor(private localStorage: LocalStorageServiceService,
     private router: Router) { }
 
+  buttonPressed : Boolean; //To control the menu display
+
   ngOnInit() {
+    this.buttonPressed = false;
   }
 
   userLogout(){
@@ -20,4 +23,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/']);
     location.reload();
   }
+
+
+  showMenu(){
+    this.buttonPressed = ! this.buttonPressed;
+  }
+
 }
