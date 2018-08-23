@@ -53,7 +53,21 @@ nav{
 nav ul li{
     display: inline;
 }
-  
+
+//user or password is wrong 
+#messageError3{
+    width: 30%;
+    float:  left;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#messageError3 p{
+    color:rgba(155, 47, 47, 0.7); 
+    text-shadow: -1px -1px 1px #000;
+    font-size: 15px;
+}
+
 input[type=text], input[type=password], input[type=radio], textarea {
     background: rgba(172,167,96,0.7);
     border-radius: 6px; /* Rounded borders */
@@ -179,7 +193,6 @@ margin-bottom: 10px;}
     text-shadow: -1px -1px 1px #000;
     font-size: 15px;
 }
-
 
 #registrationResult{
     width: 30%;

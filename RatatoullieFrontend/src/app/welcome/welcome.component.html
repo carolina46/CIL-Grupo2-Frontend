@@ -4,7 +4,8 @@
           <button type="button" id="buttonLogo" (click)="logo();"> RATATOULLIE </button>
       </div>
       <nav>
-          <ul>    
+          <div id="messageError3" *ngIf="problemLogin"><p>{{messageProblemLogin}}</p></div>
+          <ul id="loginform">    
               <form (ngSubmit)="logIn()" #logInForm="ngForm">
                 <input type="text" placeholder=" Username" name="Username" [(ngModel)]="login.user" required>
                 <input type="password" placeholder=" Password" name="Password" [(ngModel)]="login.password" required>

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-
+import { UserSession } from './model/users/user-session';
 
 // key that is used to access the data in local storage
 const STORAGE_KEY = 'local_user';
@@ -13,11 +13,11 @@ export class LocalStorageServiceService {
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
 
-  public storeUserOnLocalStorage(user: string){
-    this.storage.set(STORAGE_KEY, user);
+  public storeUserOnLocalStorage(userSession: UserSession){
+    this.storage.set(STORAGE_KEY, userSession);
   }
 
-  public getUserFromLocalStorage(): string {
+  public getUserFromLocalStorage(): UserSession {
     return this.storage.get(STORAGE_KEY) || null;
   }
 

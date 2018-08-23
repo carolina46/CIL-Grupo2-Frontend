@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Login } from './model/users/login';
 import { MessageService } from './message.service';
 import { Signin } from './model/users/signin';
+import { UserSession } from 'src/app/model/users/user-session';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UsersService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
 
-  //Find out if the user exist
+  /** GET : Find out if the user exist */
   checkUser (signin : Signin) :  Observable<Boolean> {
     const user = signin.user;
     const url = `${this.url}users/checkUser/${user}`;
@@ -27,7 +28,7 @@ export class UsersService {
       catchError(this.handleError<Boolean>('Check user'))));
   }
 
- /** POST: add a new user to the server */
+ /** POST : add a new user to the server */
  saveUser (signin : Signin, responsible : Boolean) :  Observable<Boolean> {
   let url = ( responsible == true ? 'users/saveResponsible' : 'users/saveNormal' );
   let body = JSON.stringify(signin); 
@@ -36,6 +37,16 @@ export class UsersService {
      catchError(this.handleError<Boolean>('addUser'))
    );
  }
+
+ /** POST :  Check if user and password are correct and get the userSession */
+ login (login : Login) : Observable<UserSession>{
+   let body = JSON.stringify(login);
+   return this.http.post<UserSession>(this.url + 'users/login', body , this.header ).pipe(
+    tap(userSession => this.log(`Login User ${login.user}`)),
+    catchError(this.handleError<UserSession>('Login User'))
+    );
+ }
+
 
 
 
