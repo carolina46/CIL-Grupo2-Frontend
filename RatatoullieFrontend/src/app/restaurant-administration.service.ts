@@ -32,7 +32,7 @@ export class RestaurantAdministrationService {
   /** DELETE: deletes a  Category from the server */
   deleteCategory (category: Category): Observable<Boolean> {
     const id = category.oid;
-    const url = `${this.url}menuType/delete/${id}`;
+    const url = `${this.url}category/delete/${id}`;
     return this.http.delete<Boolean>(url, this.httpOptions).pipe(
       tap(res => this.log(`deleted Category id=${id}`),
       catchError(this.handleError<Category>('deleteCategory'))));
@@ -41,7 +41,7 @@ export class RestaurantAdministrationService {
   /** PUT: updates a  Category in the server */
   updateCategory (category: Category): Observable<Boolean> {
     let body = JSON.stringify(category); 
-    return this.http.put<Category>(this.url + 'menuType/update', body, this.httpOptions).pipe(
+    return this.http.put<Category>(this.url + 'category/update', body, this.httpOptions).pipe(
       tap(res=> this.log(`updated menuType id=${category.oid}`)),
       catchError(this.handleError<any>('updateCategory'))
     );
