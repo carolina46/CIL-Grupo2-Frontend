@@ -4,7 +4,6 @@ body {
 }
 body, input[text], button {
   color: crimson;
-  font-family: Cambria, Georgia;
 }
  
 button.clear {
@@ -27,15 +26,27 @@ button:disabled {
 }
 button.clear {
   color: #888;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 #messages{
-	position: fixed;
+	padding-left: 3px;
+	width: 500px;
 	background-color: #ffff66;
+	position: fixed;
+    z-index: 100; 
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    
+}
+.status_message{
+	font-family: Verdana, sans-serif;
+    font-size: 8pt;
 }
 span.messages_title{
 	font-size: 10pt;
 	color: red;
-  	font-family: Arial, Helvetica, sans-serif;
-  	font-weight: lighter;
+  	font-family: Verdana, sans-serif;
+  	font-weight: bold;
 }
