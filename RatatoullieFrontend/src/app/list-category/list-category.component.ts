@@ -35,9 +35,9 @@ export class ListCategoryComponent implements OnInit {
       if (this.category.name.length == 0) { 
           this.submited = true; // Press the add button but the field name is empty
       }
-      //this.restaurantAdministrationService.addCategory(this.category)
-      //.subscribe(cat => this.categories.push(cat));
-      //this.category.name = '';
+      this.restaurantAdministrationService.addCategory(this.category)
+      .subscribe(cat => this.categories.push(cat));
+      this.category.name = '';
   }
   
   buttonEdit(category: Category) { // To access to the edit form
