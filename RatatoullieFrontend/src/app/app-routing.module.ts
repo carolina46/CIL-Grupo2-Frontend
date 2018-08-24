@@ -13,11 +13,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/principal', pathMatch: 'full' },
   { path: 'listCategories', component: ListCategoryComponent },
   { path: 'principal', component: PrincipalComponent },
-  { path: 'menuForm', component: MenuFormComponent },
   { path: 'dishForm', component: DishFormComponent },
   { path: 'saveMenuType', component: SaveMenuTypeComponent },
   { path: 'myRestaurants', component: MyRestaurantsComponent },
   { path: 'myRestaurants/restaurant/:id', component: MyRestaurantComponent },
+  { path: 'myRestaurants/restaurant/:id/addMenu', component: MenuFormComponent },
   {  path: '**', redirectTo: '/principal'} //It should always be at the end of the list
 
 ];
