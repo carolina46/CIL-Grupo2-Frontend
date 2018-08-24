@@ -1,63 +1,36 @@
-<!--<div id="contenido">
-  <div id="form">
-    <p>Alta men&uacute;</p>
-    <form>
-      
-      <div>
-        <label for="name">Nombre</label>
-        <input type="text" id="name" required>
-      </div>
+<div id="contentDiv">
+    <div id="formDiv"> 
+
+        <h1>Alta men&uacute;</h1>
+        <form #menuForm="ngForm">
           
-      <div>
-        <label for="menuType">Tipo de men&uacute;</label>
-        <select id="menuType" required>
-          <option *ngFor="let menuType of menuTypes" [value]="menuType.id">{{menuType.name}}</option>
-        </select>
-      </div>
-     
-      <div>
-        <label for="tag">Tags</label>
-        <div id="list">
-          <label *ngFor="let menuType of menuTypes">
-              <input type="checkbox" [name]="menuType.id">{{menuType.name}} <br *ngIf="true">
-          </label>
-        </div>
-      </div>
-
-      <button type="submit" class="submit"> Agregar</button>
-
-    </form>
-  </div>
-</div>
--->
-
-
-{{diagnostic}}
-<div id="contenido">
-<div id="form"> 
-  
-    <h1>Alta men&uacute;</h1>
-    <form (ngSubmit)="onSubmit()" #menuForm="ngForm">
-      
-      <div>
-        <label for="name">Nombre</label>
-        <input type="text" id="name"
-               [(ngModel)]="menu.name" name="name"
-               #name="ngModel">
-        </div>
- 
-      <div>
-        <label for="menuType">Tipo de men&uacute;</label>
-        <select id="menuType"
-                [(ngModel)]="menuType.id" name="menuType"
-                #menuType="ngModel">
-          <option *ngFor="let type of menuTypes" [value]="type.id">{{type.name}}</option>
-        </select>
-      </div>
-
-      <button type="submit" class="submit">Agregar</button>
+          <!--NAME-->
+          <div id="field">
+            <label>Nombre</label>
+            <input type="text" id="input" [(ngModel)]="menu.name" name="name">
+          </div>
     
+          <!--MENU TYPE-->
+          <div id="field">
+            <label>Tipo de men&uacute;</label>
+            <select id="input" [(ngModel)]="menuType.oid" name="menuType">
+              <option *ngFor="let type of menuTypes" [value]="type.oid">{{type.name}}</option>
+            </select>
+          </div>
 
-    </form>
-</div>
+          <!--TAGS-->
+          <div id="field">
+            <label>Tags</label>
+            <div id="input">
+              <label id="checkbox" *ngFor="let tag of tags">
+                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="submit" (click)="addMenu();">Agregar</button>
+        
+
+        </form>
+    </div>
 </div>
