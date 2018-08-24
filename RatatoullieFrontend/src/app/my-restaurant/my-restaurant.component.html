@@ -1,3 +1,30 @@
 <div id="contentDiv">
-    <h1>{{id}}</h1>
+
+        <div id="titleDiv">
+            <div id="restoDiv">
+                <div id="back">
+                    <a routerLink="/myRestaurants"><img id="addButton" src="../../assets/images/back.png"></a> 
+                </div>
+                <div id="restoItem">
+                    <h1> RESTAURANTE {{id}} </h1>
+                    <h2>  CATEGOR&Iacute;A XXXX </h2>
+                </div>
+            </div>
+           
+            <hr>
+            <h3>MEN&Uacute;S
+                <a routerLink="/myRestaurants/addMenu"><img id="addButton" src="../../assets/images/addButtonB.png"></a>
+            </h3>
+                <hr id="nrMenu"> 
+        </div>
+
+        <div id="menusDiv">
+            <a *ngFor="let menu of menus" [routerLink]="['/myRestaurants/menu', menu.oid]">
+                <div id="menuItem">
+                    <p>{{menu.name}}</p>
+                </div> 
+            </a>
+        </div>
+        
+    
 </div>
