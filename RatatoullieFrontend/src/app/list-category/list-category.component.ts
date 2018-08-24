@@ -43,20 +43,30 @@ export class ListCategoryComponent implements OnInit {
   buttonEdit(category: Category) { // To access to the edit form
       this.categoryEdit = category; // I save it to be used in buttonCancelEdit
       this.categories = this.categories.filter(h => h !== category);//Delete from the list
-      this.category = category; //To show the name of the category to edit in the form
+      this.category.name = category.name; //To show the name of the category to edit in the form
+      this.category.oid = category.oid;
       this.showAddForm = false; //show form edit
     }
   
-  /*deleteMenuType(category: Category): void {
+  editCategory() { // updates the category in DB
+      let cat = this.category;
+      this.restaurantAdministrationService.updateCategory(this.category).subscribe(updated => {
+        if(updated){this.categories.push(cat); }});
+      this.category = new Category(); // Reset form
+      this.category.name = ''; // Reset form
+      this.showAddForm = true; // exit form edit and show form add
+    }
+  
+  deleteMenuType(category: Category): void {
       this.restaurantAdministrationService.deleteCategory(category).subscribe(deleted=>{
       if(deleted){ this.categories = this.categories.filter(h => h !== category);}});
-    }*/
+  }
   
   buttonCancelEdit() {//Not make the change
-      this.category = new Category(); //Reset form
+      this.categories.push(this.category); // I return it to the list of menuTypes
+      this.category = new Category(); // Reset form
       this.category.name = ''; //Reset form
       this.showAddForm = true; // show form add
-      this.categories.push(this.categoryEdit); //I return it to the list of menuTypes
     }
 
 }
