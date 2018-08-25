@@ -12,23 +12,14 @@ export class MessagesComponent implements OnInit {
   constructor(public messageService: MessageService) { }
 
   ngOnInit() {
-    
   }
   
-  toggleShow() : boolean{
+  toggleShow(){
     if (!this.show){
-      $('.message_body').toggleClass('message_body_hide'); // reset the messages component
-      $("#toggler_chk").prop('checked', false);
-      $("#toggler_chk").css({ 'color': 'red'});
-      
-      return false;
+      $('.message_body').toggleClass('message_body_hide');
     }else{
-      $('.message_body_hide').toggleClass('message_body'); // reset the messages component
-      $("#toggler_chk").prop('checked', true);
-      $("#toggler_chk").css({ 'color': 'black'});
-      return true;
+      $('.message_body_hide').toggleClass('message_body');
     }
-      
   }
 
 }
