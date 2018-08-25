@@ -18,11 +18,14 @@ export class MessagesComponent implements OnInit {
   toggleShow() : boolean{
     if (!this.show){
       $('.message_body').toggleClass('message_body_hide'); // reset the messages component
-      $("#toggler").prop('checked', false);
+      $("#toggler_chk").prop('checked', false);
+      $("#toggler_chk").css({ 'color': 'red'});
+      
       return false;
     }else{
       $('.message_body_hide').toggleClass('message_body'); // reset the messages component
-      $("#toggler").prop('checked', 'checked');
+      $("#toggler_chk").prop('checked', true);
+      $("#toggler_chk").css({ 'color': 'black'});
       return true;
     }
       
