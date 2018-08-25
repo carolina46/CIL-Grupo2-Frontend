@@ -13,7 +13,7 @@ button:hover {
   background-color: rgb(133, 128, 62);
   color: #000000;
 }
-div#messages{
+div.message_body{
 	height: 55px;
 	padding-left: 3px;
 	background-color: #ffff66;
@@ -22,6 +22,12 @@ div#messages{
     bottom: 0;
     left: 0;
     width: 100%;
+}
+/* This will contain the animation to hide the message*/
+div.message_body_hide{
+	-webkit-transition: height 0.5s; /* Safari */
+    transition: height 0.5s;
+    height: 0px;
 }
 .status_message{
 	font-family: Verdana, sans-serif;
@@ -36,7 +42,7 @@ div#messages_left_box{
 	float: left;
 	height: 55px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 5px;
 }
 div#messages_right_box{
 	width: 87%;
@@ -49,4 +55,11 @@ div#messages_right_box{
 	background-color: white;
 	border-style: solid;
     border-width: 1px;
+}
+div#toggler{
+	padding-left: 3px;
+	position: fixed;
+    z-index: 101;
+    bottom: 0;
+    left: 0;
 }

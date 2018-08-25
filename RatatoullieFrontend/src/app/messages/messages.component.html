@@ -1,10 +1,12 @@
-<div id="messages" *ngIf="messageService.messages.length">
+<div id="toggler">
+	<input type="checkbox" [(ngModel)]="show" (click)="toggleShow()"/>&nbsp;Show Messages
+</div>
+<div id="messages" class="message_body">
 
 	<!-- Left Box -->
 	<div id="messages_left_box">
 	  	<span class="messages_title">Status Messages</span>
-	  	<button class="clear"
-	          (click)="messageService.clear()">CLEAR</button>
+	  	<button id="clear" class="clear" (click)="messageService.clear()">Clear</button>
  	</div>
  
 	<!-- Right Box -->  

@@ -29,7 +29,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [ "node_modules/jquery/dist/jquery.min.js" ]
           },
           "configurations": {
             "production": {
@@ -78,7 +78,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [ "node_modules/jquery/dist/jquery.min.js" ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

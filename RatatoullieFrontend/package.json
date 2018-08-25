@@ -23,6 +23,7 @@
     "angular-web-storage": "^3.0.0",
     "angular-webstorage-service": "^1.0.2",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "npm": "^5.6.0",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
