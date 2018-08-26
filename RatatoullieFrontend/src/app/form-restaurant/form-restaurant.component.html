@@ -7,17 +7,55 @@
 
             <!--FORM TO CREATE A RESTAURANT -->
             <div id="frameMain">
-                <div id="form">
-                	<!-- 
-                	private Long oid; //For Hibernate
-					private String name;
-					private Category category;
-					private List<Menu> menus;
-					private Location location;
-					private List<Comment> comments;
-					private CommentFilter commentFilter;
-					private NotificationFilter notificationFilter;
-					 -->
+                <div id="form">					 
+					<form #menuForm="ngForm">
+          
+			        <!--NAME-->
+			        <div id="field">
+						<label>Nombre</label>
+			            <input type="text" id="input" [(ngModel)]="restaurant.name" name="name">
+					</div>
+			    
+					<!--CATEGORY-->
+					<div id="field">
+			            <label>Categor&iacute;a</label><br>
+			            <select id="input" [(ngModel)]="category.oid" name="category">
+			            	<option *ngFor="let category of categories" [value]="category.oid">{{category.name}}</option>
+			            </select>
+					</div>
+			
+			 		<!--LOCATION - Latitude & Longitude -->
+			        <div id="field">
+						<label>Location - Latitude</label>
+			            <input type="text" id="input" [(ngModel)]="location.latitude" vaue="0" name="name">
+			            <label>Location - Longitude</label>
+			            <input type="text" id="input" [(ngModel)]="location.longitude" value="0" name="name">
+					</div>
+			
+					<!--COMMENT FILTER -->
+					<div id="field">
+			            <label>Comment Filters</label>
+			            <div id="input">
+			              <label id="checkbox" *ngFor="let tag of tags">
+			                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+			              </label>
+			            </div>
+					</div>
+					
+					<!--NOTIFICATION FILTER -->
+					<div id="field">
+			            <label>Notification Filters</label>
+			            <div id="input">
+			              <label id="checkbox" *ngFor="let tag of tags">
+			                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+			              </label>
+			            </div>
+			          </div>
+			
+			          <button type="button" class="submit" (click)="addMenu();">Agregar</button>
+			        </form>
+					 
+					 
                 </div>
 			</div>
 	</div>
