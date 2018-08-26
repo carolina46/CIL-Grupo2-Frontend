@@ -4,7 +4,7 @@ import { RestaurantQueryService } from '../restaurant-query.service';
 import { RestaurantAdministrationService } from '../restaurant-administration.service';
 
 @Component({
-  selector: 'app-list-category',
+  selector: 'app-form-category',
   templateUrl: './form-category.component.html',
   styleUrls: ['./form-category.component.scss']
 })
