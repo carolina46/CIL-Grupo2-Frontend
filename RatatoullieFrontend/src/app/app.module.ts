@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { MenuComponent } from './menu/menu.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
+import { ListCategoryComponent } from './form-category/form-category.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { DishFormComponent } from './dish-form/dish-form.component';

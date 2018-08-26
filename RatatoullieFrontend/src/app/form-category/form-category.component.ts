@@ -5,8 +5,8 @@ import { RestaurantAdministrationService } from '../restaurant-administration.se
 
 @Component({
   selector: 'app-list-category',
-  templateUrl: './list-category.component.html',
-  styleUrls: ['./list-category.component.scss']
+  templateUrl: './form-category.component.html',
+  styleUrls: ['./form-category.component.scss']
 })
 export class ListCategoryComponent implements OnInit {
 

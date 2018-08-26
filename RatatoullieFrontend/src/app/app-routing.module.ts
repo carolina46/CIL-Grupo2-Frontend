@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListCategoryComponent } from './list-category/list-category.component';
+import { ListCategoryComponent } from './form-category/form-category.component';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
