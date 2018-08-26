@@ -10,7 +10,7 @@ import { ListCategoryComponent } from './form-category/form-category.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuFormComponent } from './form-menu/form-menu.component';
 import { DishFormComponent } from './form-dish/form-dish.component';
-import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
+import { SaveMenuTypeComponent } from './form-menu-type/form-menu-type.component';
 import { MessagesComponent } from './messages/messages.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {SaveMenuTypeComponent} from './save-menu-type.component';
+import {SaveMenuTypeComponent} from './form-menu-type.component';
 
 describe('SaveMenuTypeComponent', () => {
   let component: SaveMenuTypeComponent;
