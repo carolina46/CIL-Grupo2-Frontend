@@ -52,7 +52,8 @@ export class FormRestaurantComponent implements OnInit {
     this.category = new Category();
     this.location = new Location();
     this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
-    this.restaurantQueryService.getAllCommentFilters().subscribe(commentFilters => this.commentFilters = commentFilters);
+    this.restaurantQueryService.getCommentFilters().subscribe(commentFilters => this.commentFilters = commentFilters);
+    this.restaurantQueryService.getNotificationFilters().subscribe(notificationFilters => this.notificationFilters = notificationFilters);
   }
 
   
