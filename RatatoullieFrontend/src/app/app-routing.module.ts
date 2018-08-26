@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListCategoryComponent } from './form-category/form-category.component';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
-import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuFormComponent } from './form-menu/form-menu.component';
 import { DishFormComponent } from './form-dish/form-dish.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
 import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';

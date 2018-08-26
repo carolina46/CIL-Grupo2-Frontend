@@ -8,7 +8,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { MenuComponent } from './menu/menu.component';
 import { ListCategoryComponent } from './form-category/form-category.component';
 import { PrincipalComponent } from './principal/principal.component';
-import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuFormComponent } from './form-menu/form-menu.component';
 import { DishFormComponent } from './form-dish/form-dish.component';
 import { SaveMenuTypeComponent } from './save-menu-type/save-menu-type.component';
 import { MessagesComponent } from './messages/messages.component';
