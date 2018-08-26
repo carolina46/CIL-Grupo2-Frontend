@@ -1,5 +1,5 @@
 import { NotificationFilter } from "./notification_filter";
 
-export class VisitorNotificationFilter extends NotificationFilter{
+export class DenyNotificationFilter extends NotificationFilter{
   name: string;
 }

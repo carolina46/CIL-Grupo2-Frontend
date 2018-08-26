@@ -3,12 +3,18 @@ import { RestaurantQueryService } from '../restaurant-query.service';
 import { Restaurant } from "../model/business/restaurant";
 import { Category } from '../model/business/category';
 import { Location } from '../model/business/location';
+import { NullCommentFilter } from '../model/filter/null_comment_filter';
+import { DenyCommentFilter } from '../model/filter/deny_comment_filter';
 import { VisitorCommentFilter } from '../model/filter/visitor_comment_filter';
 import { ComensalCommentFilter } from '../model/filter/comensal_comment_filter';
 import { GourmetCommentFilter } from '../model/filter/gourmet_comment_filter';
+import { NullNotificationFilter } from '../model/filter/null_notification_filter';
+import { DenyNotificationFilter } from '../model/filter/deny_notification_filter';
 import { VisitorNotificationFilter } from '../model/filter/visitor_notification_filter';
 import { ComensalNotificationFilter } from '../model/filter/comensal_notification_filter';
 import { GourmetNotificationFilter } from '../model/filter/gourmet_notification_filter';
+import { CommentFilter } from "../model/filter/comment_filter";
+import { NotificationFilter } from "../model/filter/notification_filter";
 
 @Component({
   selector: 'app-form-restaurant',
@@ -22,19 +28,22 @@ export class FormRestaurantComponent implements OnInit {
   category: Category; // The chosen category which will be assigned to the restaurant
   location: Location; // The chosen location which will be assigned to the restaurant
 
-  //Coment Filters
-  //nullCommentFilter: NullCommentFilter;
-  //denyCommentFilter: DenyCommentFilter;
+  //Comment Filters
+  nullCommentFilter: NullCommentFilter;
+  denyCommentFilter: DenyCommentFilter;
   visitorCommentFiler: VisitorCommentFilter;
   comensalComentFilter: ComensalCommentFilter;
   gourmetCommentFilter: GourmetCommentFilter;
 
   //Notification Filters
-  //nullNotificationFilter: NullNotificationFilter;
-  //denyNotificationFilter: DenyNotificationFilter;
+  nullNotificationFilter: NullNotificationFilter;
+  denyNotificationFilter: DenyNotificationFilter;
   visitorNotificationFiler: VisitorNotificationFilter;
   comensalNotificationFilter: ComensalNotificationFilter;
   gourmetNotificationFilter: GourmetNotificationFilter;
+
+  commentFilters: CommentFilter[];
+  notificationFilters: NotificationFilter[];
 
   constructor(private restaurantQueryService: RestaurantQueryService) { }
 
@@ -42,7 +51,8 @@ export class FormRestaurantComponent implements OnInit {
     this.restaurant = new Restaurant();
     this.category = new Category();
     this.location = new Location();
-    this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories); 
+    this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
+    this.restaurantQueryService.getAllCommentFilters().subscribe(commentFilters => this.commentFilters = commentFilters);
   }
 
   
