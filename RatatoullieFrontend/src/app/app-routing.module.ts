@@ -8,6 +8,7 @@ import { DishFormComponent } from './form-dish/form-dish.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
 import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
 import { SaveMenuTypeComponent } from './form-menu-type/form-menu-type.component';
+import { FormRestaurantComponent } from './form-restaurant/form-restaurant.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/principal', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'myRestaurants', component: MyRestaurantsComponent },
   { path: 'myRestaurants/restaurant/:id', component: MyRestaurantComponent },
   { path: 'myRestaurants/restaurant/:id/addMenu', component: MenuFormComponent },
+  { path: 'myRestaurants/addRestaurant', component: FormRestaurantComponent },
   {  path: '**', redirectTo: '/principal'} //It should always be at the end of the list
 
 ];

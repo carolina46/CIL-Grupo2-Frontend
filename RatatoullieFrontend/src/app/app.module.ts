@@ -15,6 +15,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
 import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
+import { FormRestaurantComponent } from './form-restaurant/form-restaurant.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
     WelcomeComponent,
     MyRestaurantsComponent,
     MyRestaurantComponent,
+    FormRestaurantComponent,
   ],
   imports: [
     BrowserModule,
