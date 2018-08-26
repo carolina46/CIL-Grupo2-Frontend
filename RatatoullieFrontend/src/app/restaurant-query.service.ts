@@ -9,31 +9,32 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { Tag } from './model/business/tag';
 import { TagSelected } from './model/business/tag-selected';
+import { NotificationFilter } from "./model/filter/notification_filter";
+import { CommentFilter } from "./model/filter/comment_filter";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantQueryService {
 
-  private url = 'http://localhost:8080/Ratatoullie/';
   private header = ({ headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
 
   constructor(private http: HttpClient, private messageService: MessageService) {  }
 
-  private categoriesGetURL = 'http://localhost:8080/Ratatoullie/category/listCategory';
-  private categoryURL = ''; // TO BE IMPLEMENTED ON THE SERVER!
+  private url = 'http://localhost:8080/Ratatoullie/';
 
   // ------CATEGORY METHODS -------
   // Returns an Observable array of Categories, save in the log and handles error if any
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoriesGetURL).pipe(
-        tap(categories => this.log('categories retrieved')),
+    const url = this.url + 'category/listCategory';
+    return this.http.get<Category[]>(url).pipe(
+        tap(_ => this.log('categories retrieved')),
         catchError(this.handleError('getCategories', []))
       );
   }
 
   getCategory(id: number): Observable<Category> {
-    const url = `${this.categoryURL}/${id}`;
+    const url = `${this.url}getCategory/${id}`;
     return this.http.get<Category>(url).pipe(
         tap(_ => this.log(`retrieved category with id=${id}`)),
         catchError(this.handleError<Category>(`getCategory id=${id}`))
@@ -45,6 +46,22 @@ export class RestaurantQueryService {
       return this.http.get<Tag[]>(this.url + 'tag/list')
         .pipe(tap(tag => this.log('tag retrieved')),
         catchError(this.handleError('getTags', [])));
+  }
+
+  getNotificationFilters(): Observable<NotificationFilter[]> {
+    const url = this.url + 'restaurant/getNotificationFilters';
+    return this.http.get<NotificationFilter[]>(url).pipe(
+      tap(_ => this.log('retrieved list of notification filters')),
+      catchError(this.handleError('getNotificationFilters', []))
+      );
+  }
+  
+  getCommentFilters(): Observable<CommentFilter[]> {
+    const url = this.url + 'restaurant/getCommentFilters';
+    return this.http.get<CommentFilter[]>(url).pipe(
+      tap(_ => this.log('retrieved list of comment filters')),
+      catchError(this.handleError('getCommentFilters', []))
+      );
   }
 
   // ------HandleError METHODS -------
