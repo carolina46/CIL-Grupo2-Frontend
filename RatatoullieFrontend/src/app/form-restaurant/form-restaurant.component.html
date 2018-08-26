@@ -36,8 +36,8 @@
 					<div id="field">
 			            <label>Comment Filters</label>
 			            <div id="input">
-			              <label id="checkbox" *ngFor="let tag of tags">
-			                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+			              <label id="checkbox" *ngFor="let cf of commentFilters">
+			                  <input type="checkbox" name="cf" [(ngModel)]="cf.selected">{{cf.name}}
 			              </label>
 			            </div>
 					</div>
@@ -46,8 +46,8 @@
 					<div id="field">
 			            <label>Notification Filters</label>
 			            <div id="input">
-			              <label id="checkbox" *ngFor="let tag of tags">
-			                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+			              <label id="checkbox" *ngFor="let nf of notificationFilters">
+			                  <input type="checkbox" name="nf" [(ngModel)]="nf.selected">{{nf.name}}
 			              </label>
 			            </div>
 			          </div>
