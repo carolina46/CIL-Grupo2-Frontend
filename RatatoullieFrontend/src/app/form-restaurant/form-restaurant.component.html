@@ -14,6 +14,9 @@
 			        <div id="field">
 						<label>Nombre</label>
 			            <input type="text" id="input" [(ngModel)]="restaurant.name" name="name">
+			            <div *ngIf="(submited&&restaurant.name.length==0)"  class="alert alert-danger">
+                        	Debes ingresar un nombre
+                        </div>
 					</div>
 			    
 					<!--CATEGORY-->
@@ -52,7 +55,7 @@
 			            </div>
 			          </div>
 			
-			          <button type="button" class="submit" (click)="addMenu();">Agregar</button>
+			          <button type="button" class="submit" (click)="addRestaurant();">Agregar</button>
 			        </form>
 					 
 					 
