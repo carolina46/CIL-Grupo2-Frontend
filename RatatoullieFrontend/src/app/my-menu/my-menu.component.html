@@ -1,3 +1,30 @@
-<p>
-  my-menu works!
-</p>
+<div id="contentDiv">
+  
+        <div id="titleDiv">
+              <div id="menuDiv">
+                  <div id="buttonBackDiv">
+                        <button type="button" id="buttonBack" (click)="goBack()"><img src="../../assets/images/back.png" ></button>
+                  </div>
+                  <div id="menuItem">
+                      <h1> MENU xxx </h1>
+                  </div>
+              </div>
+             
+              <hr>
+              <h3>PLATOS
+                  <a routerLink="/myRestaurants/restaurant/{{idRestaurant}}/menu/{{idMenu}}/addDish"><img id="addButton" src="../../assets/images/addButtonB.png"></a>
+              </h3>
+                  <hr id="nrDish"> 
+        </div>
+  
+       <!-- <div id="dishesDiv">
+              <a *ngFor="let menu of menus" routerLink="/myRestaurants/restaurant/{{id}}/menu/menu.oid">
+                  <div id="menuItem" class="animated flipInX"  >
+                      <p>{{menu.name}}</p>
+                  </div> 
+              </a>
+          </div>-->
+        
+      
+  </div>
+  

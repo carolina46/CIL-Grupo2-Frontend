@@ -1,0 +1,98 @@
+#contentDiv{
+    padding-top: 100px;
+    
+}
+
+//----------------------
+#titleDiv{
+    height: 15%;
+    text-align: center;
+}
+
+#menuDiv{
+    width: 60%;
+    display: inline-block;
+}
+
+
+#buttonBackDiv{
+    width: 10%;
+    display: inline-block;
+}
+
+#menuItem {
+    width: 90%;
+    display: inline-block;
+}
+
+#buttonBack {
+    margin-right: 10px;
+    display: inline-block;
+    border: none;
+    background:transparent;
+}
+
+
+
+h1, h2, h3{
+    color: #fff;
+    text-shadow: -2px -2px 2px #000;
+}
+
+#addButton{
+    margin-left: 20px;
+}
+
+hr{
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}    
+
+#nrDish {
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    margin-bottom: 5%;
+}    
+
+
+
+
+
+
+
+//-------------------
+
+
+#dishesDiv{
+    width: 60%;
+    margin-left: 20%;
+    
+    //background-color: gold;
+}
+
+#dishItem{
+    width: 40%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    background: rgba(26,188,156,0.7);
+    -webkit-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:10px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+    padding: 10px;
+    display: inline-block;
+}
+
+
