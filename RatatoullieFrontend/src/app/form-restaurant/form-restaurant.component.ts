@@ -3,12 +3,10 @@ import { RestaurantQueryService } from '../restaurant-query.service';
 import { Restaurant } from "../model/business/restaurant";
 import { Category } from '../model/business/category';
 import { Location } from '../model/business/location';
-import { NullCommentFilter } from '../model/filter/null_comment_filter';
 import { DenyCommentFilter } from '../model/filter/deny_comment_filter';
 import { VisitorCommentFilter } from '../model/filter/visitor_comment_filter';
 import { ComensalCommentFilter } from '../model/filter/comensal_comment_filter';
 import { GourmetCommentFilter } from '../model/filter/gourmet_comment_filter';
-import { NullNotificationFilter } from '../model/filter/null_notification_filter';
 import { DenyNotificationFilter } from '../model/filter/deny_notification_filter';
 import { VisitorNotificationFilter } from '../model/filter/visitor_notification_filter';
 import { ComensalNotificationFilter } from '../model/filter/comensal_notification_filter';
@@ -29,14 +27,12 @@ export class FormRestaurantComponent implements OnInit {
   location: Location; // The chosen location which will be assigned to the restaurant
 
   //Comment Filters
-  nullCommentFilter: NullCommentFilter;
   denyCommentFilter: DenyCommentFilter;
   visitorCommentFiler: VisitorCommentFilter;
   comensalComentFilter: ComensalCommentFilter;
   gourmetCommentFilter: GourmetCommentFilter;
 
   //Notification Filters
-  nullNotificationFilter: NullNotificationFilter;
   denyNotificationFilter: DenyNotificationFilter;
   visitorNotificationFiler: VisitorNotificationFilter;
   comensalNotificationFilter: ComensalNotificationFilter;
