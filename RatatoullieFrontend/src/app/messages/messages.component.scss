@@ -7,7 +7,7 @@ button.clear {
   	cursor: pointer;
   	margin-left: 10px;
   	margin-bottom: 2px;
- 	margin-top: 2px;
+	margin-top: 2px;
 }
 button:hover {
   background-color: rgb(133, 128, 62);
@@ -37,7 +37,7 @@ span.messages_title{
 	font-size: 10pt;
 }
 div#messages_left_box{
-	width: 13%;
+	width: 20%;
 	position: relative;
 	float: left;
 	height: 55px;
@@ -45,7 +45,7 @@ div#messages_left_box{
 	padding-top: 3px;
 }
 div#messages_right_box{
-	width: 87%;
+	width: 80%;
 	position: relative;
 	float: right;
 	padding-left: 10px;
