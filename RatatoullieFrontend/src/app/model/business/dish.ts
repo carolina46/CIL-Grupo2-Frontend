@@ -1,7 +1,7 @@
 import { Tag } from "./tag";
 
 export class Dish {
-    id: number;
+    oid: number;
     name: string;
     description: string;
     picture: string;
