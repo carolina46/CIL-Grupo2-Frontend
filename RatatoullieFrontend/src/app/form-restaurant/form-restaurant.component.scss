@@ -1,12 +1,13 @@
 #frame {
-    width: 90%;
-    margin-left: 5%;
+    width: 40%;
+    margin-left: 15%;
     padding-top: 100px;
     text-align: center;
 }
 
 #frameTitle{
-    width: 85%;
+    width: 70%;
+    margin-left: 45%;
     display: inline-block;
     padding:5px;
     margin-bottom: 20px;
@@ -22,14 +23,14 @@
 }
 
 #frameBody{
-    width: 85%;
+    width: 40%;
     display: inline-block;
 }
 
 #frameMain {
     position: absolute;
     box-sizing: border-box;
-    width: 75%;
+    width: 40%;
 }
 
 #form {
@@ -47,22 +48,21 @@
     text-shadow: -1px -1px 1px #000;
 }
 
-input[type=text], textarea {
-    background: rgba(172,167,96,0.7);
-    width: 100%; /* Full width */
-    padding: 12px; /* Some padding */  
-    border-radius: 6px; /* Rounded borders */
-    box-sizing: border-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */  
+input[type=text], [type=number], textarea, select  {
+   background: rgba(172,167,96,0.7);
+   width: 100%; /* Full width */
+   padding: 12px; /* Some padding */  
+   border-radius: 6px; /* Rounded borders */
+   box-sizing: border-box; /* Make sure that padding and width stays in place */
+   margin-top: 6px; /* Add a top margin */
+   margin-bottom: 16px; /* Bottom margin */
+   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 .submit {
 	-moz-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	-webkit-box-shadow: 0px 0px 0px 1px #9fb4f2;
 	box-shadow: 0px 0px 0px 1px #9fb4f2;
-      //background-color : #aca760;
-      background: rgba(148, 142, 64, 0.7);
+    background: rgba(148, 142, 64, 0.7);
 	-moz-border-radius:13px;
 	-webkit-border-radius:13px;
 	border-radius:10px;
@@ -74,6 +74,6 @@ input[type=text], textarea {
 .submit:hover {
 	background-color:#beba86;
 }
-select{
-	color: black;
+#checkbox{
+    width: 100%;
 }

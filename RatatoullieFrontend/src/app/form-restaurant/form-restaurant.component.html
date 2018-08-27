@@ -26,10 +26,10 @@
 			
 			 		<!--LOCATION - Latitude & Longitude -->
 			        <div id="field">
-						<label>Location - Latitude</label>
-			            <input type="text" id="input" [(ngModel)]="location.latitude" vaue="0" name="name">
-			            <label>Location - Longitude</label>
-			            <input type="text" id="input" [(ngModel)]="location.longitude" value="0" name="name">
+						<label>Location - Latitude&nbsp;</label>
+			            <input type="number" step="0.1" id="input" [(ngModel)]="location.latitude" vaue="0" name="name"><br>
+			            <label>Location - Longitude&nbsp;</label>
+			            <input type="number" step="0.1" id="input" [(ngModel)]="location.longitude" value="0" name="name">
 					</div>
 			
 					<!--COMMENT FILTER -->
@@ -37,17 +37,17 @@
 			            <label>Comment Filters</label>
 			            <div id="input">
 			              <label id="checkbox" *ngFor="let cf of commentFilters">
-			                  <input type="checkbox" name="cf" [(ngModel)]="cf.selected">{{cf.name}}
+			                  <input type="checkbox" name="cf" [(ngModel)]="cf.selected"/>{{cf.name}} <br>
 			              </label>
 			            </div>
 					</div>
-					
+					<br>
 					<!--NOTIFICATION FILTER -->
 					<div id="field">
 			            <label>Notification Filters</label>
 			            <div id="input">
 			              <label id="checkbox" *ngFor="let nf of notificationFilters">
-			                  <input type="checkbox" name="nf" [(ngModel)]="nf.selected">{{nf.name}}
+			                  <input type="checkbox" name="nf" [(ngModel)]="nf.selected"/>{{nf.name}} <br>
 			              </label>
 			            </div>
 			          </div>
