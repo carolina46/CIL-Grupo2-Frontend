@@ -1,6 +1,6 @@
 import { Category } from "./category";
 import { Menu } from "./menu";
-//import { Comment } from "./comment";
+import { Location } from './location';
 import { CommentFilter } from "../filter/comment_filter";
 import { NotificationFilter } from "../filter/notification_filter";
 
@@ -10,7 +10,6 @@ export class Restaurant {
     category: Category;
     menus: Menu[];
     location: Location;
-    comments: Comment[];
     commentFilter: CommentFilter;
     notificationFilter: NotificationFilter;
 }
