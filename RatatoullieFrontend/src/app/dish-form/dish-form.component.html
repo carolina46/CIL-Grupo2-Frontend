@@ -1,5 +1,43 @@
-<div id="contenido">
-  <p>
-   Alta Plato
-  </p>
+<div id="contentDiv">
+    <div id="formDiv"> 
+
+        <h1>Alta plato</h1>
+        <form #dishForm="ngForm">
+          
+          <!--IMAGE-->
+          <div id="field">
+              <label>Imagen</label><br>
+              <div id="imageDiv">
+                <img id="dishImage" src="../../assets/images/dish.gif">
+              </div>
+              <input type="file" (change)="onFileChange($event)"/>
+          </div>
+
+          <!--NAME-->
+          <div id="field">
+            <label>Nombre</label>
+            <input type="text" id="input" [(ngModel)]="dish.name" name="name">
+          </div>
+
+          <!--DESCRIPTION-->
+          <div id="field">
+              <label>Descripci&oacute;n</label>
+              <textarea rows="4" cols="50" name="description" id="input" [(ngModel)]="dish.description"></textarea>
+          </div>
+              
+          <!--TAGS-->
+          <div id="field">
+            <label>Tags</label>
+            <div id="input">
+              <label id="checkbox" *ngFor="let tag of tags">
+                  <input type="checkbox" name="tag" [(ngModel)]="tag.selected">{{tag.name}}
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="submit" (click)="addDish();">Agregar</button>
+        
+
+        </form>
+    </div>
 </div>

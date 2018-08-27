@@ -1,4 +1,103 @@
-#contenido {
-    padding-top: 150px;
+#contentDiv{
+    width: 30%;
+    margin-left: 35%;
+    padding-top: 100px;
     text-align: center;
+    padding-bottom: 100px;
 }
+
+#formDiv {
+    padding: 20px;
+    background: rgba(26,188,156,0.7);
+    -webkit-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:13px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+}
+
+h1 {margin-bottom: 20px;}
+
+#field{text-align: left;
+    margin-bottom: 10px;} 
+
+#input {
+   //background-color : #aca760;
+   background: rgba(172,167,96,0.7);
+   width: 100%; /* Full width */
+   padding: 12px; /* Some padding */  
+   border-radius: 6px; /* Rounded borders */
+   box-sizing: border-box; /* Make sure that padding and width stays in place */
+   margin-top: 6px; /* Add a top margin */
+   margin-bottom: 16px; /* Bottom margin */
+   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+	
+}
+
+#checkbox{
+    width: 50%;
+
+}
+
+#list{
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */  
+    border: 1px solid #4e6096; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    background-color: white;
+    text-align: left;
+
+   
+}
+
+
+.submit {
+    margin-top: 20px;
+	-moz-box-shadow: 0px 0px 0px 1px #9fb4f2;
+	-webkit-box-shadow: 0px 0px 0px 1px #9fb4f2;
+	box-shadow: 0px 0px 0px 1px #9fb4f2;
+      //background-color : #aca760;
+      background: rgba(148, 142, 64, 0.7);
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:10px;
+	padding:13px 37px;
+    text-decoration:none;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+
+}
+.submit:hover {
+	background-color:#beba86;
+}
+
+#imageDiv{
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:13px;
+    -moz-box-shadow: 0px 0px 0px 1px #ffffff;
+	-webkit-box-shadow: 0px 0px 0px 1px #ffffff;
+	box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+#dishImage{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#uploadButton{
+    margin-top: 15px;
+	margin-bottom: 30px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #000;
+}
+
