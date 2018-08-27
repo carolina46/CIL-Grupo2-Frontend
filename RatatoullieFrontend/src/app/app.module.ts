@@ -16,6 +16,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MyRestaurantsComponent } from './my-restaurants/my-restaurants.component';
 import { MyRestaurantComponent } from './my-restaurant/my-restaurant.component';
 import { FormRestaurantComponent } from './form-restaurant/form-restaurant.component';
+import { MyMenuComponent } from './my-menu/my-menu.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormRestaurantComponent } from './form-restaurant/form-restaurant.compo
     MyRestaurantsComponent,
     MyRestaurantComponent,
     FormRestaurantComponent,
+    MyMenuComponent,
   ],
   imports: [
     BrowserModule,
