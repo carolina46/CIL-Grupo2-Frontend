@@ -25,6 +25,8 @@ export class FormRestaurantComponent implements OnInit {
   categories: Category[]; // List of categories to choose from
   category: Category; // The chosen category which will be assigned to the restaurant
   location: Location; // The chosen location which will be assigned to the restaurant
+    
+  submited: boolean; // To control that the name field contains something
 
   //Comment Filters
   denyCommentFilter: DenyCommentFilter;
@@ -50,8 +52,15 @@ export class FormRestaurantComponent implements OnInit {
     this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
     this.restaurantQueryService.getCommentFilters().subscribe(commentFilters => this.commentFilters = commentFilters);
     this.restaurantQueryService.getNotificationFilters().subscribe(notificationFilters => this.notificationFilters = notificationFilters);
+    this.submited = false; // Did not press the add button
   }
 
-  
+  addRestaurant(): void {
+    if (this.restaurant.name.length == 0) { 
+        this.submited = true; // Press the add button but the field name is empty
+    }
+    //this.restaurantAdministrationService.addCategory(this.category)
+    //.subscribe(cat => this.categories.push(cat));
+  }
   
 }
