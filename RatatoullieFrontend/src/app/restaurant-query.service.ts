@@ -11,6 +11,7 @@ import { Tag } from './model/business/tag';
 import { TagSelected } from './model/business/tag-selected';
 import { NotificationFilter } from "./model/filter/notification_filter";
 import { CommentFilter } from "./model/filter/comment_filter";
+import { Restaurant } from './model/business/restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,30 @@ export class RestaurantQueryService {
   constructor(private http: HttpClient, private messageService: MessageService) {  }
 
   private url = 'http://localhost:8080/Ratatoullie/';
+
+
+  // GET : Rretrieves the restaurant with certain id
+  getRestaurant(id: number): Observable<Restaurant> {
+    const url = `${this.url}restaurant/get/${id}`;
+    return this.http.get<Restaurant>(url).pipe(
+        tap(_ => this.log(`retrieved Restaurant with id=${id}`)),
+        catchError(this.handleError<Restaurant>(`getRestaurant id=${id}`))
+      );
+  }
+
+
+  // POST : Add a new menu to the restaurant
+  saveMenu(restaurant : Restaurant){
+    let body = JSON.stringify(restaurant); 
+    let url = `${this.url}restaurant/saveMenu`;
+    this.http.post<Restaurant>(url, body, this.header).pipe(
+      tap(_ => this.log(`save Menu`)),
+      catchError(this.handleError<Restaurant>('save Menu'))
+    );
+  }
+  
+
+
 
   // ------CATEGORY METHODS -------
   // Returns an Observable array of Categories, save in the log and handles error if any
