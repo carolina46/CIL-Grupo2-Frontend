@@ -19,7 +19,7 @@
         </div>
 
         <div id="menusDiv">
-            <a *ngFor="let menu of menus" [routerLink]="['/myRestaurants/menu', menu.oid]">
+            <a *ngFor="let menu of menus" routerLink="/myRestaurants/restaurant/{{id}}/menu/{{menu.oid}}">
                 <div id="menuItem" class="animated flipInX"  >
                     <p>{{menu.name}}</p>
                 </div> 

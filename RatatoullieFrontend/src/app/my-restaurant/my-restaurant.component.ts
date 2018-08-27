@@ -25,15 +25,19 @@ export class MyRestaurantComponent implements OnInit {
   let m : Menu;
   m = new Menu();
   m.name="Menu1"
+  m.oid = 1;
   this.menus.push(m);
   m = new Menu();
   m.name="Menu2"
+  m.oid = 2;
   this.menus.push(m);
   m = new Menu();
   m.name="Menu3"
+  m.oid = 3;
   this.menus.push(m);
   m = new Menu();
-  m.name="Menu4"
+  m.name="Menu4";
+  m.oid = 4;
   this.menus.push(m);
   
 
