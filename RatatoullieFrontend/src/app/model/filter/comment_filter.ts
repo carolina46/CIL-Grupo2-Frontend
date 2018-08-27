@@ -1,3 +1,3 @@
 export class CommentFilter {
-    id: number;
+  oid: number;
 }

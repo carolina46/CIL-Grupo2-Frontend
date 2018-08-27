@@ -6,9 +6,9 @@ import { TagSelected } from '../model/business/tag-selected';
 import { Tag } from '../model/business/tag';
 
 @Component({
-  selector: 'app-dish-form',
-  templateUrl: './dish-form.component.html',
-  styleUrls: ['./dish-form.component.scss']
+  selector: 'app-form-dish',
+  templateUrl: './form-dish.component.html',
+  styleUrls: ['./form-dish.component.scss']
 })
 export class DishFormComponent implements OnInit {
 

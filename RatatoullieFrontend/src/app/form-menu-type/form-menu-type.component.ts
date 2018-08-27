@@ -4,9 +4,9 @@ import { MenuTypeService } from '../menu-type.service';
 import { Console } from '@angular/core/src/console';
 
 @Component({
-  selector: 'app-save-menu-type',
-  templateUrl: './save-menu-type.component.html',
-  styleUrls: ['./save-menu-type.component.scss']
+  selector: 'app-form-menu-type',
+  templateUrl: './form-menu-type.component.html',
+  styleUrls: ['./form-menu-type.component.scss']
 })
 export class SaveMenuTypeComponent implements OnInit {
 

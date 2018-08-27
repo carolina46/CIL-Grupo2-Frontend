@@ -9,9 +9,9 @@ import { TagSelected } from '../model/business/tag-selected';
 
 
 @Component({
-  selector: 'app-menu-form',
-  templateUrl: './menu-form.component.html',
-  styleUrls: ['./menu-form.component.scss']
+  selector: 'app-form-menu',
+  templateUrl: './form-menu.component.html',
+  styleUrls: ['./form-menu.component.scss']
 })
 export class MenuFormComponent implements OnInit {
   

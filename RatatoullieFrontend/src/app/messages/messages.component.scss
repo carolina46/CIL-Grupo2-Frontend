@@ -1,44 +1,33 @@
 /* MessagesComponent's private CSS styles */
-body {
-  margin: 2em;
-}
-body, input[text], button {
-  color: crimson;
-}
- 
 button.clear {
-  font-family: Arial;
-  background-color: #0066ff;
-  border: none;
-  padding: 3px 5px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-  color: #ffffff!important;
+  	background-color: rgba(133, 128, 62, 0.4);
+  	border-style: solid 1px;
+  	padding: 2px 3px;
+  	border-radius: 4px;
+  	cursor: pointer;
+  	margin-left: 10px;
+  	margin-bottom: 2px;
+ 	margin-top: 2px;
 }
 button:hover {
-  background-color: #cce0ff;
+  background-color: rgb(133, 128, 62);
+  color: #000000;
 }
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
-}
-button.clear {
-  color: #888;
-  margin-bottom: 2px;
-  margin-top: 2px;
-}
-#messages{
+div.message_body{
+	height: 55px;
 	padding-left: 3px;
-	width: 500px;
 	background-color: #ffff66;
 	position: fixed;
-    z-index: 100; 
-    bottom: 0; 
+    z-index: 100;
+    bottom: 0;
     left: 0;
     width: 100%;
-    
+}
+/* This will contain the animation to hide the message*/
+div.message_body_hide{
+	-webkit-transition: height 0.5s; /* Safari */
+    transition: height 0.5s;
+    height: 0px;
 }
 .status_message{
 	font-family: Verdana, sans-serif;
@@ -46,7 +35,31 @@ button.clear {
 }
 span.messages_title{
 	font-size: 10pt;
-	color: red;
-  	font-family: Verdana, sans-serif;
-  	font-weight: bold;
+}
+div#messages_left_box{
+	width: 13%;
+	position: relative;
+	float: left;
+	height: 55px;
+	padding-left: 15px;
+	padding-top: 3px;
+}
+div#messages_right_box{
+	width: 87%;
+	position: relative;
+	float: right;
+	padding-left: 10px;
+	padding-top: 2px;
+	margin-top: 3px;
+	height: 50px;
+	background-color: white;
+	border-style: solid;
+    border-width: 1px;
+}
+div#toggler{
+	padding-left: 3px;
+	position: fixed;
+    z-index: 101;
+    bottom: 0;
+    left: 0;
 }

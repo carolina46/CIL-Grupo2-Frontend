@@ -4,9 +4,9 @@ import { RestaurantQueryService } from '../restaurant-query.service';
 import { RestaurantAdministrationService } from '../restaurant-administration.service';
 
 @Component({
-  selector: 'app-list-category',
-  templateUrl: './list-category.component.html',
-  styleUrls: ['./list-category.component.scss']
+  selector: 'app-form-category',
+  templateUrl: './form-category.component.html',
+  styleUrls: ['./form-category.component.scss']
 })
 export class ListCategoryComponent implements OnInit {
 
