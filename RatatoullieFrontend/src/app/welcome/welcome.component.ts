@@ -42,7 +42,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   logIn(){ //Method to enter the system
-    /*
     if(this.login.password.length > 0 && this.login.user.length > 0 ){
       this.userService.login(this.login).subscribe(UserSession =>{
         console.log(UserSession)
@@ -60,10 +59,10 @@ export class WelcomeComponent implements OnInit {
       this.problemLogin = true;
       this.messageProblemLogin = "¡Debe completar todos los campos!";
     }
-    */
+    /*
     this.localStorage.storeUserOnLocalStorage(new UserSession());
     this.router.navigate(['/principal']);
-    location.reload();
+    location.reload();*/
   }
 
   showFormSignIn(){//Button "registrarse", Show signin form
