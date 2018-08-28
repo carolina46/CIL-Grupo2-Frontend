@@ -44,7 +44,33 @@ export class RestaurantQueryService {
       catchError(this.handleError<Restaurant>('save Menu'))
     );
   }
+
+
+
+
+
+
+
   
+// POST : Add a new restaurant
+saveRestaurant(restaurant: Restaurant) {
+  let body = JSON.stringify(restaurant); 
+  const url = this.url + 'restaurant/savedRestaurant';
+  console.log(restaurant);
+  this.http.post(url, body, this.header).pipe(
+     tap(_ => this.log(`save restaurant`)),
+     catchError(this.handleError ('save restaurant error'))
+   );
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,6 +114,8 @@ export class RestaurantQueryService {
       catchError(this.handleError('getCommentFilters', []))
       );
   }
+
+
 
   // ------HandleError METHODS -------
   // Send the message log to the Message Service

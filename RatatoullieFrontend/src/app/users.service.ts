@@ -7,7 +7,8 @@ import { Login } from './model/users/login';
 import { MessageService } from './message.service';
 import { Signin } from './model/users/signin';
 import { Restaurant } from './model/business/restaurant';
-import { UserSession } from 'src/app/model/users/user-session';
+import { UserSession } from './model/users/user-session';
+import { Responsible } from './model/users/responsible';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,8 @@ export class UsersService {
 
  /** POST : add a new user to the server */
  saveUser (signin : Signin, responsible : Boolean) :  Observable<Boolean> {
-  let url = ( responsible == true ? 'users/saveResponsible' : 'users/saveNormal' );
+  let url = ( responsible.toString() == "true" ? 'users/saveResponsible' : 'users/saveNormal' );
+  console.log(url);
   let body = JSON.stringify(signin); 
   return this.http.post<Boolean>(this.url + url, body, this.header).pipe(
      tap(res => this.log(`added User ${signin.user}`)),
@@ -56,6 +58,17 @@ export class UsersService {
       .pipe(tap(restaurants => this.log('restaurants retrieved')),
       catchError(this.handleError('getMyRestaurants', [])));
   }
+
+  // POST : add a new restaurant to the user
+  addRestaurant(responsible : Responsible): Observable<Boolean> {
+    let url = this.url + "users/responsible/addRestaurant";
+    console.log(url);
+    let body = JSON.stringify(responsible); 
+    return this.http.post<Boolean>(url, body, this.header).pipe(
+       tap(res => this.log(`added restaurant`)),
+       catchError(this.handleError<Boolean>('addRestaurant'))
+     );
+    }
 
 
 
