@@ -2,7 +2,9 @@
     width: 40%;
     margin-left: 15%;
     padding-top: 100px;
+    margin-bottom: 600px;
     text-align: center;
+    z-index: 5;
 }
 
 #frameTitle{
@@ -76,4 +78,25 @@ input[type=text], [type=number], textarea, select  {
 }
 #checkbox{
     width: 100%;
+}
+
+
+#field{
+    text-align: left;
+    margin-top: 10px;
+}
+
+h1{
+    margin-bottom: 40px;
+}
+
+#input{
+    background: rgba(172,167,96,0.7);
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */  
+    border-radius: 6px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
