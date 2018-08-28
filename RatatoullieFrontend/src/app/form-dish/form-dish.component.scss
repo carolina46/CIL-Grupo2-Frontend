@@ -90,14 +90,39 @@ h1 {margin-bottom: 20px;}
 }
 
 #dishImage{
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
+    height: 100%;
+    -moz-border-radius:13px;
+	-webkit-border-radius:13px;
+    border-radius:13px;
 }
 
-#uploadButton{
-    margin-top: 15px;
-	margin-bottom: 30px;
+
+//Button to update a dish image
+#file{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#file + label {
+    margin-top: 20px;
+    margin-bottom: 30px;
+	background: rgba(148, 142, 64, 0.7);
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	padding:8px;
+    text-decoration:none;
     color:#fff;
     text-shadow: -1px -1px 1px #000;
+}
+
+#file:focus + label,
+#file + label:hover {
+   background-color:#beba86;
 }
 

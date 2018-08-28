@@ -8,9 +8,10 @@
           <div id="field">
               <label>Imagen</label><br>
               <div id="imageDiv">
-                <img id="dishImage" src="../../assets/images/dish.gif">
+                  <img *ngIf="imageDish" id="dishImage" [src]="imageDish">
               </div>
-              <input type="file" (change)="onFileChange($event)"/>
+              <input type="file" id="file" (change)="detectFiles($event)">
+              <label for="file">Seleccionar Archivo</label>
           </div>
 
           <!--NAME-->

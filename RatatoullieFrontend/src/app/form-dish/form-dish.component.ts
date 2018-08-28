@@ -24,6 +24,7 @@ export class DishFormComponent implements OnInit {
     the information that the user enters */
   dish = new Dish();
   tagsSelecteds : Tag[];
+  imageDish : string;
 
   
   constructor(private restaurantQueryService : RestaurantQueryService,
@@ -55,8 +56,19 @@ export class DishFormComponent implements OnInit {
     this.tagsSelecteds = listOfTags;
     //Create the dish to send to the DB
     this.dish.tags = this.tagsSelecteds;
+    this.dish.picture = this.imageDish;
     console.log(this.dish);
   }
+
+  detectFiles(event) {
+    let file = event.target.files[0];
+    if (file) {
+      let reader = new FileReader();
+      reader.onload = (e: any) => { this.imageDish = e.target.result;}
+      reader.readAsDataURL(file);
+    }
+  }
+    
 
 
 }
