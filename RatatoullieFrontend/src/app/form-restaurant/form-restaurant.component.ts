@@ -19,6 +19,7 @@ import { LocalStorageServiceService } from '../local-storage-service.service';
 import { UserSession } from '../model/users/user-session';
 import {Router} from '@angular/router';
 import { Responsible } from '../model/users/responsible';
+import { NewRestaurant } from '../model/newRestaurant';
 
 @Component({
   selector: 'app-form-restaurant',
@@ -27,16 +28,10 @@ import { Responsible } from '../model/users/responsible';
 })
 export class FormRestaurantComponent implements OnInit {
 
-  userSession : UserSession;
-  restaurant: Restaurant; // The restaurant to be saved
-  category: Category; // The chosen category which will be assigned to the restaurant
-  location: Location; // The chosen location which will be assigned to the restaurant
+  userSession : UserSession; //The logged user
+  newRestaurant : NewRestaurant; // The restaurant to be saved
   categories: Category[]; // List of categories to choose from
-  //Comment Filters
-  visitor : boolean;
-  comensal : boolean;
-  gourmet : boolean;
-
+  
   constructor(private restaurantQueryService: RestaurantQueryService,
               private localStorage : LocalStorageServiceService,
               private userService : UsersService,
@@ -48,39 +43,17 @@ export class FormRestaurantComponent implements OnInit {
     else
       if(this.userSession.rol != "Responsible") this.router.navigate(['/principal']);
       else{
-      this.restaurant = new Restaurant();
-      this.category = new Category();
-      this.location = new Location();
-      this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
-      this.visitor = false;
-      this.comensal = false;
-      this.gourmet = false;
+        this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
+      this.newRestaurant = new NewRestaurant();
+      this.newRestaurant.responsible = this.userSession.oid;
+      this.newRestaurant.visitor = false;
+      this.newRestaurant.comensal = false;
+      this.newRestaurant.gourmet = false;
       }    
   }
 
   addRestaurant(): void {
-    this.restaurant.category = this.category;
-    this.restaurant.location = this.location;
-    this.getCommentFiltersSelected();
-    let user = new Responsible();
-    user.oid = this.userSession.oid;
-    user.restaurants = [];
-    user.restaurants.push(this.restaurant);
-    this.userService.addRestaurant(user).subscribe(res=> console.log("volvi"));
-
-  }
-
-  getCommentFiltersSelected(){
-    var composite = new CompositeCommentFilter();
-    composite.configurationFilters = [];
-    if(this.visitor) composite.configurationFilters.push(new VisitorCommentFilter);
-    if(this.comensal) composite.configurationFilters.push(new ComensalCommentFilter);
-    if(this.gourmet) composite.configurationFilters.push(new GourmetCommentFilter);
-
-    if(composite.configurationFilters.length == 0) this.restaurant.commentFilter = new DenyCommentFilter;
-    else
-      if(composite.configurationFilters.length > 1) this.restaurant.commentFilter = composite;
-      else this.restaurant.commentFilter = composite.configurationFilters[0];
+    this.userService.addRestaurant(this.newRestaurant).subscribe(_=>  window.history.back());
   }
   
 }

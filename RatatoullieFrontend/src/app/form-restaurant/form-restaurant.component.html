@@ -9,7 +9,7 @@
 			        <!--NAME-->
 			        <div id="field">
 						<label>Nombre</label>
-			            <input type="text" id="input" [(ngModel)]="restaurant.name" name="name">
+			            <input type="text" id="input" [(ngModel)]="newRestaurant.name" name="name">
 			            <div *ngIf="(submited&&restaurant.name.length==0)"  class="alert alert-danger">
                         	Debes ingresar un nombre
                         </div>
@@ -18,7 +18,7 @@
 					<!--CATEGORY-->
 					<div id="field">
 			            <label>Categor&iacute;a</label><br>
-			            <select id="input" [(ngModel)]="category.oid" name="category">
+			            <select id="input" [(ngModel)]="newRestaurant.category" name="category">
 			            	<option *ngFor="let category of categories" [value]="category.oid">{{category.name}}</option>
 			            </select>
 					</div>
@@ -26,36 +26,24 @@
 			 		<!--LOCATION - Latitude & Longitude -->
 			        <div id="field">
 						<label>Latitud</label>
-			            <input type="number" step="0.1" id="input" [(ngModel)]="location.latitude" vaue="0" name="name"><br>
+			            <input type="number" step="0.1" id="input" [(ngModel)]="newRestaurant.latitude" vaue="0" name="name"><br>
 			            <label>Longitud</label>
-			            <input type="number" step="0.1" id="input" [(ngModel)]="location.longitude" value="0" name="name">
+			            <input type="number" step="0.1" id="input" [(ngModel)]="newRestaurant.longitude" value="0" name="name">
 					</div>
 			
 					<!--COMMENT FILTER -->
 					<div id="field">
 			            <label>¿Qu&eacute; tipo de Usuario puede comentar?</label>
 			            <div id="input">
-						  <label id="checkbox"> <input type="checkbox" name="visitor" [(ngModel)]="visitor"/>Visitante<br></label>
-						  <label id="checkbox"> <input type="checkbox" name="comensal" [(ngModel)]="comensal"/>Comensal<br></label>
-						  <label id="checkbox"> <input type="checkbox" name="gourmet" [(ngModel)]="gourmet"/>Gourmet<br></label>
+						  <label id="checkbox"> <input type="checkbox" name="visitor" [(ngModel)]="newRestaurant.visitor"/>Visitante<br></label>
+						  <label id="checkbox"> <input type="checkbox" name="comensal" [(ngModel)]="newRestaurant.comensal"/>Comensal<br></label>
+						  <label id="checkbox"> <input type="checkbox" name="gourmet" [(ngModel)]="newRestaurant.gourmet"/>Gourmet<br></label>
 			            </div>
 					</div>
 					<br>
-					<!--NOTIFICATION FILTER 
-					<div id="field">
-			            <label>Notification Filters</label>
-			            <div id="input">
-			              <label id="checkbox" *ngFor="let nf of notificationFilters">
-			                  <input type="checkbox" name="nf" [(ngModel)]="nf.selected"/>{{nf.name}} <br>
-			              </label>
-			            </div>
-			          </div>-->
-			
-			          <button type="button" class="submit" (click)="addRestaurant();">Agregar</button>
+					<button type="button" class="submit" (click)="addRestaurant();">Agregar</button>
 			        </form>
-					 
-					 
-                </div>
+				</div>
 			</div>
 	</div>
 </div>
