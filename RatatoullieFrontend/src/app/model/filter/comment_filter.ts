@@ -1,3 +1,3 @@
-export class CommentFilter {
+export abstract class CommentFilter {
   oid: number;
 }

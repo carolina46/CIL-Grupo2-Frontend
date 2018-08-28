@@ -1,3 +1,3 @@
-export class NotificationFilter {
+export abstract class NotificationFilter {
   id: number;
 }
