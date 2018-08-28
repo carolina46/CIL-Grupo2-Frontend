@@ -19,48 +19,14 @@ export class MyRestaurantsComponent implements OnInit {
 
   restaurants : Restaurant[];
 
-  
-
   ngOnInit() {
-   /* let userSession = this.localStorage.getUserFromLocalStorage();
-    if(userSession.rol != "Administrator") this.router.navigate(['/principal']);
-    else this.getRestaurants(userSession);*/
-
-    this.initRestaurants();
-
-
+    let userSession = this.localStorage.getUserFromLocalStorage();
+    if(userSession.rol != "Responsible") this.router.navigate(['/principal']);
+    else this.getRestaurants(userSession);
   }
 
-
-initRestaurants(){
-  this.restaurants = [];
-
-  let r1 : Restaurant = new Restaurant();
-  r1.oid = 1;
-  r1.name = "restaurant 1"
-  r1.category = new Category();
-  r1.category.name = "categoria 1"
-
-  let r2 : Restaurant = new Restaurant();
-  r2.oid = 2;
-  r2.name = "restaurant 2"
-  r2.category = new Category();
-  r2.category.name = "categoria 2"
-
-  let r3 : Restaurant = new Restaurant();
-  r3.oid = 3;
-  r3.name = "restaurant 3"
-  r3.category = new Category();
-  r3.category.name = "categoria 3"
-  
-  this.restaurants.push(r1);
-  this.restaurants.push(r2);
-  this.restaurants.push(r3);
-}
-
-
-getRestaurants( userSession : UserSession){
-  this.usersService.getMyRestaurants(userSession).subscribe(restaurants => this.restaurants = restaurants);
-}
+  getRestaurants( userSession : UserSession){
+    this.usersService.getMyRestaurants(userSession).subscribe(restaurants => this.restaurants = restaurants);
+  }
 
 }

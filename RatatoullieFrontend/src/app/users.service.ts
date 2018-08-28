@@ -9,6 +9,7 @@ import { Signin } from './model/users/signin';
 import { Restaurant } from './model/business/restaurant';
 import { UserSession } from './model/users/user-session';
 import { Responsible } from './model/users/responsible';
+import { NewRestaurant } from './model/newRestaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -60,9 +61,8 @@ export class UsersService {
   }
 
   // POST : add a new restaurant to the user
-  addRestaurant(responsible : Responsible): Observable<Boolean> {
+  addRestaurant(responsible : NewRestaurant): Observable<Boolean> {
     let url = this.url + "users/responsible/addRestaurant";
-    console.log(url);
     let body = JSON.stringify(responsible); 
     return this.http.post<Boolean>(url, body, this.header).pipe(
        tap(res => this.log(`added restaurant`)),

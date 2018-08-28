@@ -8,8 +8,8 @@
   <div id="restaurantsDiv">
     <a *ngFor="let restaurant of restaurants" [routerLink]="['/myRestaurants/restaurant', restaurant.oid]">
         <div id="restaurantItem" class="animated flipInX" >
-            <p>{{restaurant.name}}</p>
-            <p>{{restaurant.category.name}}</p>
+            <H3>{{restaurant.name}}</H3>
+            <H4>{{restaurant.category.name}}</H4>
         </div> 
     </a>
   </div>
