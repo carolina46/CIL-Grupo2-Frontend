@@ -13,7 +13,7 @@ import { ComensalNotificationFilter } from '../model/filter/comensal_notificatio
 import { GourmetNotificationFilter } from '../model/filter/gourmet_notification_filter';
 import { CommentFilter } from "../model/filter/comment_filter";
 import { NotificationFilter } from "../model/filter/notification_filter";
-import { CompositeCommentFilter } from '../model/filter/CompositeCommentFilter';
+import { CompositeCommentFilter } from '../model/filter/composite_comment_filter';
 import { UsersService } from '../users.service';
 import { LocalStorageServiceService } from '../local-storage-service.service';
 import { UserSession } from '../model/users/user-session';
