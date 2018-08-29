@@ -7,13 +7,13 @@
           <!--NAME-->
           <div id="field">
             <label>Nombre</label>
-            <input type="text" id="input" [(ngModel)]="menu.name" name="name">
+            <input type="text" id="input" [(ngModel)]="newMenu.name" name="name">
           </div>
     
           <!--MENU TYPE-->
           <div id="field">
             <label>Tipo de men&uacute;</label>
-            <select id="input" [(ngModel)]="menuType.oid" name="menuType">
+            <select id="input" [(ngModel)]="newMenu.type" name="menuType">
               <option *ngFor="let type of menuTypes" [value]="type.oid">{{type.name}}</option>
             </select>
           </div>

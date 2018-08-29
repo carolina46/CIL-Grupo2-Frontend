@@ -12,6 +12,7 @@ import { TagSelected } from './model/business/tag-selected';
 import { NotificationFilter } from "./model/filter/notification_filter";
 import { CommentFilter } from "./model/filter/comment_filter";
 import { Restaurant } from './model/business/restaurant';
+import { NewMenu } from './model/NewMenu';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +37,12 @@ export class RestaurantQueryService {
 
 
   // POST : Add a new menu to the restaurant
-  saveMenu(restaurant : Restaurant){
-    let body = JSON.stringify(restaurant); 
+  saveMenu(newMenu : NewMenu): Observable<Boolean> {
+    let body = JSON.stringify(newMenu); 
     let url = `${this.url}restaurant/saveMenu`;
-    this.http.post<Restaurant>(url, body, this.header).pipe(
+    return this.http.post<Boolean>(url, body, this.header).pipe(
       tap(_ => this.log(`save Menu`)),
-      catchError(this.handleError<Restaurant>('save Menu'))
+      catchError(this.handleError<Boolean>('save Menu'))
     );
   }
 
@@ -56,7 +57,6 @@ export class RestaurantQueryService {
 saveRestaurant(restaurant: Restaurant) {
   let body = JSON.stringify(restaurant); 
   const url = this.url + 'restaurant/savedRestaurant';
-  console.log(restaurant);
   this.http.post(url, body, this.header).pipe(
      tap(_ => this.log(`save restaurant`)),
      catchError(this.handleError ('save restaurant error'))
