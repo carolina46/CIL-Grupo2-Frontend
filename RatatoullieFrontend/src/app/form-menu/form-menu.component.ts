@@ -42,7 +42,7 @@ export class MenuFormComponent implements OnInit {
   ngOnInit() {
     //CONSULT USER ROL, MUST BE AN RESPONSIBLE.
     let userSession = this.localStorage.getUserFromLocalStorage();
-    if(userSession.rol != "Responsible") this.router.navigate(['/principal']);
+    if(userSession.role != "Responsible") this.router.navigate(['/principal']);
     else{
       //We retrieve the parameter id of the restaurant.
       this.activatedRoute.params.subscribe( params => {

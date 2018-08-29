@@ -32,7 +32,7 @@ export class MyRestaurantComponent implements OnInit {
     if (this.userSession == null)  this.router.navigate(['/principal']);
     else
       /* We check if the user has a responsible role */
-      if(this.userSession.rol != "Responsible") this.router.navigate(['/principal']);
+      if(this.userSession.role != "Responsible") this.router.navigate(['/principal']);
       else{
         /* we get the data to show from the bd */
         this.restaurant = new Restaurant();

@@ -47,7 +47,7 @@ export class FormRestaurantComponent implements OnInit {
       this.messageService.add("ERROR: El usuario no se encuentra logueado  hubo un error al recuperar la sesión de usuario..");
       this.router.navigate(['/principal']);
     }else
-      if(this.userSession.rol != "Responsible"){
+      if(this.userSession.role != "Responsible"){
         this.messageService.add("ERROR: El usuario no tiene permisos para agregar un Restaurant..");
         this.router.navigate(['/principal']);
       }else{
