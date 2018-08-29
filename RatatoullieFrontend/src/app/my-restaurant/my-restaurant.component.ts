@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Menu } from '../model/business/menu';
+import { RestaurantQueryService } from '../restaurant-query.service';
+import { UserSession } from '../model/users/user-session';
+import { LocalStorageServiceService } from '../local-storage-service.service';
+import { Restaurant } from '../model/business/restaurant';
 
 @Component({
   selector: 'app-my-restaurant',
@@ -9,38 +13,33 @@ import { Menu } from '../model/business/menu';
 })
 export class MyRestaurantComponent implements OnInit {
 
-  constructor(private router : ActivatedRoute) { }
+  constructor(private router : Router,
+              private activatedRoute : ActivatedRoute,
+              private localStorage : LocalStorageServiceService,
+              private restaurantQueryService: RestaurantQueryService) { }
 
-  id : number;
-  menus : Menu[];
+  /* The logged user */
+  userSession : UserSession; 
+  /* The id of the restaurant that we are going to show. We get it from the url */
+  idRestaurant : number;
+  /* The restaurant and its menus. We get it from the bd */
+  restaurant : Restaurant;
+
 
   ngOnInit() {
-    this.router.params.subscribe( params => {
-      this.id = params['id'].toString();
-  });
-
-  //Debemos buscar en la bd el reto con sus menus.
-  
-  this.menus=[];
-  let m : Menu;
-  m = new Menu();
-  m.name="Menu1"
-  m.oid = 1;
-  this.menus.push(m);
-  m = new Menu();
-  m.name="Menu2"
-  m.oid = 2;
-  this.menus.push(m);
-  m = new Menu();
-  m.name="Menu3"
-  m.oid = 3;
-  this.menus.push(m);
-  m = new Menu();
-  m.name="Menu4";
-  m.oid = 4;
-  this.menus.push(m);
-  
-
+    /* We check if a user is logged in */ 
+    this.userSession = this.localStorage.getUserFromLocalStorage();
+    if (this.userSession == null)  this.router.navigate(['/principal']);
+    else
+      /* We check if the user has a responsible role */
+      if(this.userSession.rol != "Responsible") this.router.navigate(['/principal']);
+      else{
+        /* we get the data to show from the bd */
+        this.restaurant = new Restaurant();
+        this.restaurant.menus = [];
+        this.activatedRoute.params.subscribe( params => { this.idRestaurant = params['id'].toString();});
+        this.restaurantQueryService.getRestaurant(this.idRestaurant).subscribe(restaurant=> {this.restaurant=restaurant;});  
+      }
 
   }
 

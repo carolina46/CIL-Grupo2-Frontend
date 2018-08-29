@@ -13,13 +13,13 @@
            
             <hr>
             <h3>MEN&Uacute;S
-                <a routerLink="/myRestaurants/restaurant/{{id}}/addMenu"><img id="addButton" src="../../assets/images/addButtonB.png"></a>
+                <a routerLink="/myRestaurants/restaurant/{{restaurant.oid}}/addMenu"><img id="addButton" src="../../assets/images/addButtonB.png"></a>
             </h3>
                 <hr id="nrMenu"> 
         </div>
 
         <div id="menusDiv">
-            <a *ngFor="let menu of menus" routerLink="/myRestaurants/restaurant/{{id}}/menu/{{menu.oid}}">
+            <a *ngFor="let menu of restaurant.menus" routerLink="/myRestaurants/restaurant/{{id}}/menu/{{menu.oid}}">
                 <div id="menuItem" class="animated flipInX"  >
                     <p>{{menu.name}}</p>
                 </div> 

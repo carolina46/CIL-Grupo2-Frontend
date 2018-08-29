@@ -46,8 +46,14 @@ export class RestaurantQueryService {
     );
   }
 
-
-
+  // GET : get restaurant`s menus
+  getRestaurantWithMenus(id: number): Observable<Restaurant> {
+    const url = `${this.url}restaurant/getMenus/${id}`;
+    return this.http.get<Restaurant>(url).pipe(
+        tap(_ => this.log(`retrieved Restaurant with id=${id}`)),
+        catchError(this.handleError<Restaurant>(`getRestaurant id=${id}`))
+      );
+  }
 
 
 
