@@ -20,6 +20,7 @@ import { UserSession } from '../model/users/user-session';
 import {Router} from '@angular/router';
 import { Responsible } from '../model/users/responsible';
 import { NewRestaurant } from '../model/newRestaurant';
+import { RestaurantAdministrationService } from "../restaurant-administration.service";
 
 @Component({
   selector: 'app-form-restaurant',
@@ -33,6 +34,7 @@ export class FormRestaurantComponent implements OnInit {
   categories: Category[]; // List of categories to choose from
   
   constructor(private restaurantQueryService: RestaurantQueryService,
+              private restaurantAdministrationService: RestaurantAdministrationService,
               private localStorage : LocalStorageServiceService,
               private userService : UsersService,
               private router : Router) { }
@@ -53,7 +55,7 @@ export class FormRestaurantComponent implements OnInit {
   }
 
   addRestaurant(): void {
-    this.userService.addRestaurant(this.newRestaurant).subscribe(_=>  window.history.back());
+    this.restaurantAdministrationService.addRestaurant(this.newRestaurant).subscribe(_=>  window.history.back());
   }
   
 }
