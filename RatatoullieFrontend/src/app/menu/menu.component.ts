@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageServiceService } from '../local-storage-service.service';
 import {Router} from '@angular/router';
+import { UserSession } from "../model/users/user-session";
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,8 @@ import {Router} from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  loggedUser: UserSession;
+
   constructor(private localStorage: LocalStorageServiceService,
     private router: Router) { }
 
@@ -16,6 +19,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.buttonPressed = false;
+    this.loggedUser = this.localStorage.getUserFromLocalStorage();
   }
 
   userLogout(){

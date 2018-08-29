@@ -6,11 +6,27 @@
         <nav>
             <div class="dropDownMenu">
                     <button type="button" (click)="showMenu()" class="dropButton"><img src="../../assets/images/menu.png"></button>
-                    <div *ngIf="buttonPressed" id="myDropdown" class="dropDown-content">
-                      <a href="#">Recomendaciones</a>
-                      <a href="/myRestaurants">Mis restaurantes</a>
-                      <a href="#">Notificaciones</a>
-                      <button type="button" id="buttonExit" (click)="userLogout();">Salir</button>
+                    <div *ngIf="buttonPressed" id="myDropdown" class="dropDown-content">            
+						<div *ngIf="loggedUser.role=='Administrator'">
+            				<a routerLink="/">Administraci&oacute;n de Usuarios</a>
+            				<a routerLink="/">Administraci&oacute;n de Comentarios</a>
+	            			<a routerLink="/listCategories">Alta Categor&iacute;a</a>
+            			</div>
+            		
+            			<div *ngIf="loggedUser.role=='Responsible'">
+		  					<a routerLink="/saveMenuType">Tipos de Menu</a>
+		  					<a routerLink="/myRestaurants">Mis Restaurantes</a>
+		  					<a routerLink="/">Notificaciones</a>
+            			</div>
+            
+            			<div *ngIf="loggedUser.role=='NormalClient'">
+	            			<a routerLink="/">Mis Amigos</a>
+			  				<a routerLink="/">Mis Votos</a>
+			  				<a routerLink="/">Mis Comentarios</a>
+			  				<a routerLink="/">Recomendaciones</a>
+		  				</div>
+                      
+                      	<button type="button" id="buttonExit" (click)="userLogout();">Salir</button>
                     </div>
             </div>
         </nav>
