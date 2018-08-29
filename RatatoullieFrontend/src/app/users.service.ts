@@ -60,18 +60,6 @@ export class UsersService {
       catchError(this.handleError('getMyRestaurants', [])));
   }
 
-  // POST : add a new restaurant to the user
-  addRestaurant(responsible : NewRestaurant): Observable<Boolean> {
-    let url = this.url + "users/responsible/addRestaurant";
-    let body = JSON.stringify(responsible); 
-    return this.http.post<Boolean>(url, body, this.header).pipe(
-       tap(res => this.log(`added restaurant`)),
-       catchError(this.handleError<Boolean>('addRestaurant'))
-     );
-    }
-
-
-
   // Send the message log to the Message Service
   protected log(message: string) {
     this.messageService.add(`RestaurantQueryService: ${message}`); // Note the special quotation marks

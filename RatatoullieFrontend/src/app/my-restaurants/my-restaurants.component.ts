@@ -21,7 +21,7 @@ export class MyRestaurantsComponent implements OnInit {
 
   ngOnInit() {
     let userSession = this.localStorage.getUserFromLocalStorage();
-    if(userSession.rol != "Responsible") this.router.navigate(['/principal']);
+    if(userSession.role != "Responsible") this.router.navigate(['/principal']);
     else this.getRestaurants(userSession);
   }
 

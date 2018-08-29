@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageServiceService } from '../local-storage-service.service';
+import { UserSession } from "../model/users/user-session";
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  loggedUser: UserSession;
+
+  constructor(private localStorageService: LocalStorageServiceService) { }
 
   ngOnInit() {
+     this.loggedUser = this.localStorageService.getUserFromLocalStorage();
   }
 
 }

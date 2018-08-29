@@ -8,11 +8,30 @@
             <!--FORM TO ADD OR UPDATE A MENU TYPE-->
             <div id="#frameMain">
 	            <div id="form">
-	                <ul>
-	  					<li><a routerLink="/listCategories">Alta Categor&iacute;a</a></li>
-	  					<li><a routerLink="/saveMenuType">Alta MenuType</a></li>
-	  					<li><a routerLink="/myRestaurants">Mis Restaurants</a></li>
-					</ul>
+					<div *ngIf="loggedUser.role=='Administrator'">
+            			<ul>
+            				<li><a routerLink="/">Administraci&oacute;n de Usuarios</a></li>
+            				<li><a routerLink="/">Administraci&oacute;n de Comentarios</a></li>
+	            			<li><a routerLink="/listCategories">Alta Categor&iacute;a</a></li>
+            			</ul>
+            		</div>
+            		
+            		<div *ngIf="loggedUser.role=='Responsible'">
+            			<ul>            			
+		  					<li><a routerLink="/saveMenuType">Alta de Tipos de Menu</a></li>
+		  					<li><a routerLink="/myRestaurants">Mis Restaurantes</a></li>
+		  					<li><a routerLink="/">Mis Notificaciones</a>
+	  					</ul>
+            		</div>
+            
+            		<div *ngIf="loggedUser.role=='NormalClient'">
+            			<ul>
+		  					<li><a routerLink="/">Mis Amigos</a></li>
+		  					<li><a routerLink="/">Mis Votos</a>
+		  					<li><a routerLink="/">Mis Comentarios</a>
+		  					<li><a routerLink="/">Mis Recomendaciones</a>
+	  					</ul>
+            		</div>
 	            </div>
             </div>
     </div>

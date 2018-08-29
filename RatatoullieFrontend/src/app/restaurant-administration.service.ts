@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { NewRestaurant } from "./model/newRestaurant";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,16 @@ export class RestaurantAdministrationService {
     return this.http.put<Category>(this.url + 'category/update', body, this.httpOptions).pipe(
       tap(res=> this.log(`updated menuType id=${category.oid}`)),
       catchError(this.handleError<any>('updateCategory'))
+    );
+  }
+
+  // POST : add a new restaurant to the user
+  addRestaurant(responsible : NewRestaurant): Observable<Boolean> {
+    let url = this.url + "users/responsible/addRestaurant";
+    let body = JSON.stringify(responsible); 
+    return this.http.post<Boolean>(url, body, this.httpOptions).pipe(
+       tap(res => this.log(`added restaurant`)),
+       catchError(this.handleError<Boolean>('addRestaurant'))
     );
   }
 

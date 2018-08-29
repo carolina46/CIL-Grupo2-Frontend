@@ -13,13 +13,15 @@ import { ComensalNotificationFilter } from '../model/filter/comensal_notificatio
 import { GourmetNotificationFilter } from '../model/filter/gourmet_notification_filter';
 import { CommentFilter } from "../model/filter/comment_filter";
 import { NotificationFilter } from "../model/filter/notification_filter";
-import { CompositeCommentFilter } from '../model/filter/CompositeCommentFilter';
+import { CompositeCommentFilter } from '../model/filter/composite_comment_filter';
 import { UsersService } from '../users.service';
 import { LocalStorageServiceService } from '../local-storage-service.service';
 import { UserSession } from '../model/users/user-session';
 import {Router} from '@angular/router';
 import { Responsible } from '../model/users/responsible';
 import { NewRestaurant } from '../model/newRestaurant';
+import { RestaurantAdministrationService } from "../restaurant-administration.service";
+import { MessageService } from "../message.service";
 
 @Component({
   selector: 'app-form-restaurant',
@@ -33,27 +35,33 @@ export class FormRestaurantComponent implements OnInit {
   categories: Category[]; // List of categories to choose from
   
   constructor(private restaurantQueryService: RestaurantQueryService,
+              private restaurantAdministrationService: RestaurantAdministrationService,
+              private messageService: MessageService,
               private localStorage : LocalStorageServiceService,
               private userService : UsersService,
               private router : Router) { }
 
   ngOnInit() {
     this.userSession = this.localStorage.getUserFromLocalStorage();
-    if (this.userSession == null)  this.router.navigate(['/principal']);
-    else
-      if(this.userSession.rol != "Responsible") this.router.navigate(['/principal']);
-      else{
+    if (this.userSession == null){
+      this.messageService.add("ERROR: El usuario no se encuentra logueado  hubo un error al recuperar la sesión de usuario..");
+      this.router.navigate(['/principal']);
+    }else
+      if(this.userSession.role != "Responsible"){
+        this.messageService.add("ERROR: El usuario no tiene permisos para agregar un Restaurant..");
+        this.router.navigate(['/principal']);
+      }else{
         this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
-      this.newRestaurant = new NewRestaurant();
-      this.newRestaurant.responsible = this.userSession.oid;
-      this.newRestaurant.visitor = false;
-      this.newRestaurant.comensal = false;
-      this.newRestaurant.gourmet = false;
+        this.newRestaurant = new NewRestaurant();
+        this.newRestaurant.responsible = this.userSession.oid;
+        this.newRestaurant.visitor = false;
+        this.newRestaurant.comensal = false;
+        this.newRestaurant.gourmet = false;
       }    
   }
 
   addRestaurant(): void {
-    this.userService.addRestaurant(this.newRestaurant).subscribe(_=>  window.history.back());
+    this.restaurantAdministrationService.addRestaurant(this.newRestaurant).subscribe(_=>  window.history.back());
   }
   
 }

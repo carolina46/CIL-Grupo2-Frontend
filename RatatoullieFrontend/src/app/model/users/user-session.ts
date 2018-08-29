@@ -1,7 +1,12 @@
 export class UserSession {
-    oid: number; 
+  oid: number; 
 	user: String;
-	rol : String ; //Administrator or NormalClient or Responsible
+	role : String ; 
+    /* Possible values corresponds to Class Names in Ratatoullie's backend (src/main/java/model/)
+     * "Administrator"
+     * "NormalClient"
+     * "Responsible"
+     * */
 	rankingDTO : String; 
 
 }
