@@ -36,7 +36,7 @@ export class DishFormComponent implements OnInit {
   ngOnInit() {
       //CONSULT USER ROL, MUST BE AN RESPONSIBLE.
       let userSession = this.localStorage.getUserFromLocalStorage();
-      if(userSession.rol != "Responsible") this.router.navigate(['/principal']);
+      if(userSession.role != "Responsible") this.router.navigate(['/principal']);
       else
           //We retrieve the parameter idRestaurant and idMenu.
           this.activatedRoute.params.subscribe( params => {
