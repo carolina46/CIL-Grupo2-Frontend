@@ -21,6 +21,7 @@ import {Router} from '@angular/router';
 import { Responsible } from '../model/users/responsible';
 import { NewRestaurant } from '../model/newRestaurant';
 import { RestaurantAdministrationService } from "../restaurant-administration.service";
+import { MessageService } from "../message.service";
 
 @Component({
   selector: 'app-form-restaurant',
@@ -35,22 +36,27 @@ export class FormRestaurantComponent implements OnInit {
   
   constructor(private restaurantQueryService: RestaurantQueryService,
               private restaurantAdministrationService: RestaurantAdministrationService,
+              private messageService: MessageService,
               private localStorage : LocalStorageServiceService,
               private userService : UsersService,
               private router : Router) { }
 
   ngOnInit() {
     this.userSession = this.localStorage.getUserFromLocalStorage();
-    if (this.userSession == null)  this.router.navigate(['/principal']);
-    else
-      if(this.userSession.rol != "Responsible") this.router.navigate(['/principal']);
-      else{
+    if (this.userSession == null){
+      this.messageService.add("ERROR: El usuario no se encuentra logueado  hubo un error al recuperar la sesión de usuario..");
+      this.router.navigate(['/principal']);
+    }else
+      if(this.userSession.rol != "Responsible"){
+        this.messageService.add("ERROR: El usuario no tiene permisos para agregar un Restaurant..");
+        this.router.navigate(['/principal']);
+      }else{
         this.restaurantQueryService.getCategories().subscribe(categories => this.categories = categories);
-      this.newRestaurant = new NewRestaurant();
-      this.newRestaurant.responsible = this.userSession.oid;
-      this.newRestaurant.visitor = false;
-      this.newRestaurant.comensal = false;
-      this.newRestaurant.gourmet = false;
+        this.newRestaurant = new NewRestaurant();
+        this.newRestaurant.responsible = this.userSession.oid;
+        this.newRestaurant.visitor = false;
+        this.newRestaurant.comensal = false;
+        this.newRestaurant.gourmet = false;
       }    
   }
 
