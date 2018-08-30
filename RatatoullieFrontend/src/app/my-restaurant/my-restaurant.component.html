@@ -2,12 +2,14 @@
 
         <div id="titleDiv">
             <div id="restoDiv">
-                <div id="back">
-                    <a routerLink="/myRestaurants"><img id="addButton" src="../../assets/images/back.png"></a> 
+                <div id="buttonBackDiv">
+                            <button type="button" id="buttonBack" (click)="goBack()"><img src="../../assets/images/back.png" ></button>
                 </div>
                 <div id="restoItem">
-                    <h1> RESTAURANTE {{id}} </h1>
-                    <h2>  CATEGOR&Iacute;A XXXX </h2>
+                    
+                        <h1> {{restaurant.name}} - </h1>
+                        <h3> {{restaurant.category.name}} </h3>
+                   
                 </div>
             </div>
            

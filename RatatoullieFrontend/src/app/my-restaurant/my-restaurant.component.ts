@@ -37,10 +37,18 @@ export class MyRestaurantComponent implements OnInit {
         /* we get the data to show from the bd */
         this.restaurant = new Restaurant();
         this.restaurant.menus = [];
-        this.activatedRoute.params.subscribe( params => { this.idRestaurant = params['id'].toString();});
-        this.restaurantQueryService.getRestaurant(this.idRestaurant).subscribe(restaurant=> {this.restaurant=restaurant;});  
+        this.activatedRoute.params.subscribe( params => { 
+            this.idRestaurant = params['id'].toString();
+            this.restaurantQueryService.getRestaurant(this.idRestaurant).subscribe(restaurant=> {this.restaurant=restaurant;});  
+        });
+       
       }
 
   }
+
+  goBack(){
+    window.history.back();
+  }
+
 
 }

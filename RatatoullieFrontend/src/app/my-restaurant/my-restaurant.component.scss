@@ -12,6 +12,7 @@
 h1, h2, h3{
     color: #fff;
     text-shadow: -2px -2px 2px #000;
+    display: inline;
 }
 
 #addButton{
@@ -52,10 +53,23 @@ hr{
 }
 
 #restoItem {
-    width: 95%;
+    width: 90%;
     display: inline-block;
    // background-color: red;
 }
+
+#buttonBackDiv{
+    width: 10%;
+    display: inline-block;
+}
+
+#buttonBack {
+    margin-right: 10px;
+    display: inline-block;
+    border: none;
+    background:transparent;
+}
+
 
 
 //-------------------
@@ -64,7 +78,6 @@ hr{
 #menusDiv{
     width: 60%;
     margin-left: 20%;
-    
     //background-color: gold;
 }
 
@@ -83,6 +96,7 @@ hr{
     text-shadow: -1px -1px 1px #000;
     padding: 10px;
     display: inline-block;
+    text-align: center;
 }
 
 
