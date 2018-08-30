@@ -6,13 +6,9 @@
                             <button type="button" id="buttonBack" (click)="goBack()"><img src="../../assets/images/back.png" ></button>
                 </div>
                 <div id="restoItem">
-                    
-                        <h1> {{restaurant.name}} - </h1>
-                        <h3> {{restaurant.category.name}} </h3>
-                   
+                    <h1> {{restaurant.name}} </h1>
                 </div>
             </div>
-           
             <hr>
             <h3>MEN&Uacute;S
                 <a routerLink="/myRestaurants/restaurant/{{restaurant.oid}}/addMenu"><img id="addButton" src="../../assets/images/addButtonB.png"></a>

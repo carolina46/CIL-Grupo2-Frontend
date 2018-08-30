@@ -47,7 +47,7 @@ export class DishFormComponent implements OnInit {
                   if(restaurant == null) this.router.navigate(['/principal']);
                   else{
                       //Look for the menu with oid = idMenu
-                      let menus = restaurant.menus.filter(m => m.oid !== this.idMenu);
+                      let menus = restaurant.menus.filter(m => m.oid == this.idMenu);
                       if(menus.length == 0) this.router.navigate(['/principal']);
                       else{
                         this.dish = new Dish();

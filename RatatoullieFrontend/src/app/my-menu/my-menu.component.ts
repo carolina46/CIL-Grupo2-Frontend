@@ -43,10 +43,13 @@ export class MyMenuComponent implements OnInit {
                     if(restaurant == null)  this.router.navigate(['/principal']);
                     else{
                       this.restaurant = restaurant;
+                      this.menu = new Menu();
+                      this.menu.dishes = [];
                       //Look for the menu with oid = idMenu
-                      let menus = restaurant.menus.filter(m => m.oid !== this.idMenu);
+                      let menus = restaurant.menus.filter(m => m.oid == this.idMenu);
                       if(menus.length == 0) this.router.navigate(['/principal']);
                       else  this.menu = menus[0];
+                      console.log(this.menu);
                     }
                 });  
             });
