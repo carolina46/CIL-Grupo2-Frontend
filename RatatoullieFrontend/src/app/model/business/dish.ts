@@ -4,6 +4,6 @@ export class Dish {
     oid: number;
     name: string;
     description: string;
-    picture: Blob;
+    picture: string;
     tags: Tag[]; 
 }
